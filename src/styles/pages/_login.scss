@@ -1,0 +1,58 @@
+.sgpm-login {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Raleway', sans-serif;
+  text-align: center;
+}
+
+.sgpm-login__frame-red {
+  @extend .sgpm-login;
+  background-color: $red;
+  height: 100vh;
+  width: 45vw;
+  color: white;
+  font-size: 3rem;
+}
+
+.sgpm-login__logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 70%;
+
+  * {
+    padding: 0.5rem 0;
+  }
+
+  svg {
+    width: 35rem;
+  }
+}
+
+.sgpm-login__frame-light-gray {
+  @extend .sgpm-login;
+  flex-direction: column;
+  background-color: $light-gray;
+  height: 100vh;
+  width: 55vw;
+  padding: 0 13vw;
+
+  input {
+    width: 100%;
+  }
+}
+
+.sgpm-login__person-icon {
+  svg {
+    width: 80%;
+    fill: $blue;
+  }
+}
+
+.sgpm-login__email-input,
+.sgpm-login__password-input {
+  width: 100%;
+  margin: 1.75rem 0;
+}
