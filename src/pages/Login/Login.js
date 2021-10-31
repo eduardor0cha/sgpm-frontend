@@ -3,8 +3,12 @@ import '../../styles/main.scss';
 import { Logo } from '../../assets/logo';
 import { PersonIcon } from '../../assets/icons';
 import { Input, Checkbox, Button } from '../../components';
+import { useHistory } from 'react-router-dom';
 
 function Login() {
+  const history = useHistory();
+  const handleClick = () => history.push('/home');
+
   return (
     <div className="sgpm-login">
       <div className="sgpm-login__frame-red">
@@ -24,8 +28,15 @@ function Login() {
         <div className="sgpm-login__password-input">
           <Input type="pw" placeHolder="Senha" />
         </div>
-        <Checkbox text="Lembre-se de mim" />
-        <Button />
+        <div className="sgpm-login__checkbox">
+          <Checkbox text="Lembre-se de mim" />
+        </div>
+        <div className="sgpm-login__login-button">
+          <Button text="Entrar" onClick={handleClick}/>
+        </div>
+        <div className="sgpm-login__forgot-password">
+          <a href="">Esqueceu a senha?</a>
+        </div>
       </div>
     </div>
   );

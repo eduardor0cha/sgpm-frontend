@@ -1,7 +1,16 @@
 .sgpm-c-button {
   background-color: $blue;
-  height: 4rem;
-  width: 10rem;
-  border-radius: 1rem;
+  border-radius: 3rem;
   color: white;
+  font-size: 2.5rem;
+  padding: 0.6rem 2.5rem;
+  border: none;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:active {
+    background-color: $light-blue;
+  }
 }

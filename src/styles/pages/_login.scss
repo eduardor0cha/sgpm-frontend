@@ -5,54 +5,134 @@
   align-items: center;
   font-family: 'Raleway', sans-serif;
   text-align: center;
-}
 
-.sgpm-login__frame-red {
-  @extend .sgpm-login;
-  background-color: $red;
-  height: 100vh;
-  width: 45vw;
-  color: white;
-  font-size: 3rem;
-}
-
-.sgpm-login__logo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 70%;
-
-  * {
-    padding: 0.5rem 0;
+  &__frame-red {
+    @extend .sgpm-login;
+    background-color: $red;
+    height: 100vh;
+    width: 45vw;
+    color: white;
+    font-size: 3rem;
   }
 
-  svg {
-    width: 35rem;
+  &__logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 70%;
+    * {
+      padding: 0.5rem 0;
+    }
+    svg {
+      width: 35rem;
+    }
   }
-}
 
-.sgpm-login__frame-light-gray {
-  @extend .sgpm-login;
-  flex-direction: column;
-  background-color: $light-gray;
-  height: 100vh;
-  width: 55vw;
-  padding: 0 13vw;
+  &__frame-light-gray {
+    @extend .sgpm-login;
+    flex-direction: column;
+    background-color: $light-gray;
+    height: 100vh;
+    width: 55vw;
+    padding: 0 13vw;
+    input {
+      font-size: 2rem;
+      width: 100%;
+    }
+  }
 
-  input {
+  &__person-icon {
+    svg {
+      width: 80%;
+      fill: $blue;
+    }
+  }
+
+  &__email-input, &__password-input {
     width: 100%;
+    margin: 1.75rem 0;
+  }
+
+  &__checkbox {
+    align-self: flex-start;
+  }
+  
+  &__login-button {
+    margin-top: 5rem;
+  }
+  
+  &__forgot-password {
+    align-self: flex-end;
+    margin-top: 3rem;
+    a{
+      text-decoration: underline;
+      font-size: 2rem;
+      color: black;
+  
+      &:active {
+        color: gray;
+      }
+    }
   }
 }
 
-.sgpm-login__person-icon {
-  svg {
-    width: 80%;
-    fill: $blue;
+@media (max-width: 950px) {
+  .sgpm-login__frame-red {
+    font-size: 2.5rem;
+    svg {
+      width: 30rem;
+    }
+  }
+
+  .sgpm-login__frame-light-gray {
+    padding: 0 8vw;
+
+    input, a, button {
+      font-size: 1.5rem;
+    }
+
+    .sgpm-login__checkbox {
+
+      label {
+        font-size: 1.7rem;
+      }
+    }
   }
 }
 
-.sgpm-login__email-input,
-.sgpm-login__password-input {
-  width: 100%;
-  margin: 1.75rem 0;
+@media (max-width: 740px) {
+  .sgpm-login {
+    background-color: $red;
+    flex-direction: column;
+  }
+
+  .sgpm-login__frame-red{
+    width: 100vw;
+    height: 40vh;
+  }
+
+  .sgpm-login__logo {
+    svg {
+      width: 70%;
+    }
+  }
+
+  .sgpm-login__frame-light-gray {
+    width: 100vw;
+    height: 60vh;
+    background-color: $red;
+    color: white;
+
+    a {
+      color: white;
+    }
+
+    button {
+      font-size: 2rem;
+    }
+  }
+
+  .sgpm-login__person-icon {
+    display: none;
+  }
 }

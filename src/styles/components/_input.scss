@@ -4,12 +4,16 @@
   svg {
     width: 3rem;
     margin-right: 0.5rem;
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 }
 
 .sgpm-c-input {
   border: none;
-  font-size: 2rem;
+  //font-size: 2rem;
   padding: 0.8rem 1.5rem;
   border-radius: 2rem;
 
