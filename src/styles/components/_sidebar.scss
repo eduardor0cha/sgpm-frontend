@@ -1,0 +1,39 @@
+.sgpm-c-sidebar {
+  background-color: $red;
+  height: 100vh;
+  width: 10rem;
+  transition-duration: 300ms;
+
+  &__top {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding-top: 2rem;
+  }
+
+  &__logo {
+    display: none;
+  }
+
+  &__toggle-button {
+    width: 7rem;
+    cursor: pointer;
+    fill: white;
+  }
+
+  &--colapsed {
+    @extend .sgpm-c-sidebar;
+    width: 25rem;
+
+    .sgpm-c-sidebar__logo {
+      display: block;
+      width: 15rem;
+    }
+
+    .sgpm-c-sidebar__toggle-button {
+      width: 2.5rem;
+      margin-left: 2rem;
+    }
+  }
+}
