@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
+import { Layout } from './components';
 import { Login, Calendar } from './pages';
 
 function routes() {
@@ -7,7 +8,9 @@ function routes() {
     <Switch>
       <Route path="/" component={Login} exact />
       <Route path="/login" component={Login} />
-      <Route path="/calendar" component={Calendar} />
+      <Layout>
+        <Route path="/calendar" component={Calendar} />
+      </Layout>
     </Switch>
   );
 }

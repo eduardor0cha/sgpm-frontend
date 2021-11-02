@@ -1,8 +1,16 @@
+//abstracts
 @import './abstracts/variables';
+
+//base
 @import './base/topography';
-@import './pages/login';
 @import './base/reset';
+
+//pages
+@import './pages/login';
+
+//components
 @import './components/input';
 @import './components/checkbox';
 @import './components/button';
 @import './components/sidebar';
+@import './components/layout';
