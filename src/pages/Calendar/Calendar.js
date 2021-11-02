@@ -4,7 +4,7 @@ import { Sidebar } from '../../components/Sidebar';
 function Calendar() {
   return (
     <div>
-      <Sidebar />
+      <h1>Calendário</h1>
     </div>
   );
 }
