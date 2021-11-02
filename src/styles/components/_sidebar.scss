@@ -38,6 +38,13 @@
     }
   }
 
+  &__footer {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    margin-bottom: 2rem;
+  }
+
   &__link {
     width: 100%;
     height: 6rem;
@@ -53,7 +60,9 @@
     }
 
     &--active {
-      background-color: rgba(white, 0.2);
+      box-sizing: border-box;
+      border-left: 0.4rem solid white;
+      font-weight: 700;
     }
 
     &-profile-container {
@@ -91,6 +100,10 @@
       svg {
         margin: 0 1.5rem 0 2.5rem;
       }
+    }
+
+    .sgpm-c-sidebar__footer {
+      align-self: flex-start;
     }
 
     .sgpm-c-sidebar__header {

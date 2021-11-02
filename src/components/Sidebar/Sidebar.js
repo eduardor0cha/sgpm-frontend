@@ -42,7 +42,7 @@ function Sidebar() {
               `sgpm-c-sidebar__link`,
               `sgpm-c-sidebar__link--profile`
             )}
-            activeClassName="sgpm-sidebar__link--active"
+            activeClassName="sgpm-c-sidebar__link--active"
             exact={true}
           >
             <img src={GenericProfile} />
@@ -55,7 +55,7 @@ function Sidebar() {
             `sgpm-c-sidebar__link`,
             `sgpm-c-sidebar__link--calendar`
           )}
-          activeClassName="sgpm-sidebar__link--active"
+          activeClassName="sgpm-c-sidebar__link--active"
           exact={true}
         >
           <CalendarIcon />
@@ -67,7 +67,7 @@ function Sidebar() {
             `sgpm-c-sidebar__link`,
             `sgpm-c-sidebar__link--presence`
           )}
-          activeClassName="sgpm-sidebar__link--active"
+          activeClassName="sgpm-c-sidebar__link--active"
           exact={true}
         >
           <CheckIcon />
@@ -79,7 +79,7 @@ function Sidebar() {
             `sgpm-c-sidebar__link`,
             `sgpm-c-sidebar__link--users`
           )}
-          activeClassName="sgpm-sidebar__link--active"
+          activeClassName="sgpm-c-sidebar__link--active"
           exact={true}
         >
           <PersonIcon />
@@ -91,7 +91,7 @@ function Sidebar() {
             `sgpm-c-sidebar__link`,
             `sgpm-c-sidebar__link--registration`
           )}
-          activeClassName="sgpm-sidebar__link--active"
+          activeClassName="sgpm-c-sidebar__link--active"
           exact={true}
         >
           <PersonAddIcon />
@@ -103,7 +103,7 @@ function Sidebar() {
             `sgpm-c-sidebar__link`,
             `sgpm-c-sidebar__link--notifications`
           )}
-          activeClassName="sgpm-sidebar__link--active"
+          activeClassName="sgpm-c-sidebar__link--active"
           exact={true}
         >
           <NotificationIcon />
@@ -117,7 +117,7 @@ function Sidebar() {
             `sgpm-c-sidebar__link`,
             `sgpm-c-sidebar__link--settings`
           )}
-          activeClassName="sgpm-sidebar__link--active"
+          activeClassName="sgpm-c-sidebar__link--active"
           exact={true}
         >
           <SettingsIcon />
@@ -129,7 +129,7 @@ function Sidebar() {
             `sgpm-c-sidebar__link`,
             `sgpm-c-sidebar__link--help`
           )}
-          activeClassName="sgpm-sidebar__link--active"
+          activeClassName="sgpm-c-sidebar__link--active"
           exact={true}
         >
           <HelpIcon />
