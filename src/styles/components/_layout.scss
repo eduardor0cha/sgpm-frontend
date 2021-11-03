@@ -3,13 +3,13 @@
   grid-template-areas: 'sidebar main';
   grid-template-columns: auto 1fr;
   background-color: $light-gray;
-}
 
-.sgpm-c-layout__sidebar {
-  grid-area: sidebar;
-  position: sticky;
-}
+  &__sidebar {
+    grid-area: sidebar;
+    position: sticky;
+  }
 
-.sgpm-c-layout__main {
-  grid-area: main;
+  &__main {
+    grid-area: main;
+  }
 }
