@@ -1,2 +1,22 @@
 //1 - Raleway, Sans-serif
 @import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+
+body,
+input,
+button,
+select {
+  font-family: 'Raleway', sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span,
+label,
+strong {
+  font-family: 'Raleway', sans-serif;
+}
