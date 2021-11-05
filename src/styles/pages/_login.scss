@@ -5,7 +5,7 @@
   align-items: center;
   font-family: 'Raleway', sans-serif;
   text-align: center;
-
+  
   &__frame-red {
     @extend .sgpm-login;
     background-color: $red;

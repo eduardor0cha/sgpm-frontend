@@ -7,8 +7,8 @@ import {
   MenuIcon,
   CalendarIcon,
   CheckIcon,
-  PersonIcon,
-  PersonAddIcon,
+  ChangeIcon,
+  ChatIcon,
   NotificationIcon,
   SettingsIcon,
   HelpIcon
@@ -74,28 +74,28 @@ function Sidebar() {
           <span>Presença</span>
         </NavLink>
         <NavLink
-          to="/users"
+          to="/swap"
           className={classNames(
             `sgpm-c-sidebar__link`,
-            `sgpm-c-sidebar__link--users`
+            `sgpm-c-sidebar__link--swap`
           )}
           activeClassName="sgpm-c-sidebar__link--active"
           exact={true}
         >
-          <PersonIcon />
-          <span>Usuários</span>
+          <ChangeIcon />
+          <span>Solicitar troca</span>
         </NavLink>
         <NavLink
-          to="/registration"
+          to="/chat"
           className={classNames(
             `sgpm-c-sidebar__link`,
-            `sgpm-c-sidebar__link--registration`
+            `sgpm-c-sidebar__link--chat`
           )}
           activeClassName="sgpm-c-sidebar__link--active"
           exact={true}
         >
-          <PersonAddIcon />
-          <span>Cadastro</span>
+          <ChatIcon />
+          <span>Chat</span>
         </NavLink>
         <NavLink
           to="/notifications"
