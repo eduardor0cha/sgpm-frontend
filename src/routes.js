@@ -1,7 +1,7 @@
 import React from 'react';
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import { Layout } from './components';
-import { Login, Calendar } from './pages';
+import { Login, Calendar, Help } from './pages';
 
 function routes() {
   return (
@@ -10,6 +10,7 @@ function routes() {
       <Route path="/login" component={Login} />
       <Layout>
         <Route path="/calendar" component={Calendar} />
+        <Route path="/help" component={Help} />
       </Layout>
     </Switch>
   );

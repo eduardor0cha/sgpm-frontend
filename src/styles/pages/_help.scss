@@ -1,0 +1,50 @@
+.sgpm-help {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  &__faq,
+  &__contact {
+    background-color: white;
+    border-radius: 3rem;
+    padding: 3rem;
+
+    h1 {
+      color: $light-blue;
+      font-size: 2.6rem;
+    }
+
+    ul {
+      font-size: 2.2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 80%;
+      margin-top: 2rem;
+
+      li {
+        height: 20%;
+      }
+
+      a {
+        text-decoration: underline;
+        font-size: 2.2rem;
+        color: black;
+
+        &:active {
+          color: gray;
+        }
+      }
+    }
+  }
+
+  &__faq {
+    margin: 8rem 8rem 4rem 8rem;
+    height: 60%;
+  }
+
+  &__contact {
+    margin: 4rem 8rem 8rem 8rem;
+    height: 40%;
+  }
+}
