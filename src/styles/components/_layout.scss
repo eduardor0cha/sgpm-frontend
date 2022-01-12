@@ -18,3 +18,15 @@
     grid-area: main;
   }
 }
+
+@media (max-width: 1180px) {
+  .sgpm-c-layout {
+    &__sidebar {
+      position: absolute;
+    }
+
+    &__header {
+      margin-left: 8rem;
+    }
+  }
+}

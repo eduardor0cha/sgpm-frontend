@@ -120,3 +120,31 @@
     }
   }
 }
+
+@media (max-width: 1180px) {
+  .sgpm-c-sidebar {
+    height: min-content;
+
+    &__header {
+      height: 8rem;
+    }
+
+    &__content,
+    &__footer {
+      display: none;
+    }
+
+    &--colapsed {
+      height: 100vh;
+      .sgpm-c-sidebar__content,
+      .sgpm-c-sidebar__footer {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .sgpm-c-sidebar__header {
+        height: 10rem;
+      }
+    }
+  }
+}
