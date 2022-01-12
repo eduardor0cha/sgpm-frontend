@@ -32,7 +32,7 @@ function Login() {
           <Checkbox text="Lembre-se de mim" />
         </div>
         <div className="sgpm-login__login-button">
-          <Button text="Entrar" onClick={handleClick} />
+          <Button color="blue" text="Entrar" onClick={handleClick} />
         </div>
         <div className="sgpm-login__forgot-password">
           <a href="">Esqueceu a senha?</a>

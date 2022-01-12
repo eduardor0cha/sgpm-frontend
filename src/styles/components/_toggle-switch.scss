@@ -1,0 +1,54 @@
+.sgpm-c-toggle-switch {
+  position: relative;
+  display: flex;
+  width: 5rem;
+  height: 2.6rem;
+
+  > div {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  input {
+    display: none;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+}
+
+.sgpm-c-toggle-switch__slider {
+  cursor: pointer;
+  background-color: $light-gray2;
+  transition: 0.4s;
+  height: 2rem;
+  width: 5rem;
+
+  &:before {
+    position: absolute;
+    content: '';
+    height: 2.6rem;
+    width: 2.6rem;
+    bottom: 0;
+    background-color: $light-red;
+    transition: 0.4s;
+  }
+}
+
+input:checked + .sgpm-c-toggle-switch__slider {
+  background-color: $whitish-red;
+
+  &:before {
+    transform: translateX(2.5rem);
+  }
+}
+
+.sgpm-c-toggle-switch__slider.round {
+  border-radius: 3.4rem;
+
+  &:before {
+    border-radius: 50%;
+  }
+}

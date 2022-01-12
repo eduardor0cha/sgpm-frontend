@@ -4,5 +4,6 @@ import { Button } from './Button';
 import { Sidebar } from './Sidebar';
 import { Layout } from './Layout';
 import { Header } from './Header';
+import { ToggleSwitch } from './ToggleSwitch';
 
-export { Input, Checkbox, Button, Sidebar, Layout, Header };
+export { Input, Checkbox, Button, Sidebar, Layout, Header, ToggleSwitch };

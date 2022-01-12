@@ -1,16 +1,28 @@
 .sgpm-c-button {
-  background-color: $blue;
   border-radius: 3rem;
   color: white;
   font-size: 2.5rem;
   padding: 0.6rem 2.5rem;
   border: none;
+  width: min-content;
 
   &:hover {
     cursor: pointer;
   }
 
-  &:active {
+  &--blue {
+    background-color: $blue;
+  }
+
+  &--blue:active {
     background-color: $light-blue;
+  }
+
+  &--red {
+    background-color: $light-red2;
+  }
+
+  &--red:active {
+    background-color: $light-red;
   }
 }

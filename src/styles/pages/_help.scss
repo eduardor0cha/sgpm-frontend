@@ -1,4 +1,4 @@
-.sgpm-help {
+.sgpm-p-help {
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -7,7 +7,7 @@
   &__contact {
     background-color: white;
     border-radius: 3rem;
-    padding: 3rem;
+    padding: 6rem;
 
     h1 {
       color: $light-blue;

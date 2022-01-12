@@ -1,8 +1,17 @@
 import React from 'react';
 
-function Button({ text, onClick, ...props }) {
+import classNames from 'classnames';
+
+function Button({ size, color, text, onClick, ...props }) {
   return (
-    <button className="sgpm-c-button" onClick={onClick}>
+    <button
+      className={classNames(
+        `sgpm-c-button`,
+        `sgpm-c-button--${size}`,
+        `sgpm-c-button--${color}`
+      )}
+      onClick={onClick}
+    >
       {text}
     </button>
   );
