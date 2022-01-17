@@ -4,6 +4,7 @@
   grid-template-columns: auto 1fr;
   grid-template-rows: auto 1fr;
   background-color: $light-gray;
+  height: 100vh;
 
   &__header {
     grid-area: header;
@@ -27,6 +28,11 @@
 
     &__header {
       margin-left: 8rem;
+    }
+
+    &__main {
+      overflow-y: auto;
+      max-width: 100%;
     }
   }
 }

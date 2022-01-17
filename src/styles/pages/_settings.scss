@@ -54,3 +54,51 @@
     }
   }
 }
+
+@media (max-width: 930px) {
+  .sgpm-p-settings__notifications,
+  .sgpm-p-settings__delete-account {
+    h1 {
+      font-size: 2.4rem;
+    }
+  }
+
+  .sgpm-p-settings__notifications {
+    margin: 6rem 6rem 2rem 6rem;
+
+    ul {
+      font-size: 2rem;
+      justify-content: space-between;
+    }
+  }
+
+  .sgpm-p-settings__delete-account {
+    margin: 2rem 6rem 6rem 6rem;
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 630px) {
+  .sgpm-p-settings__notifications,
+  .sgpm-p-settings__delete-account {
+    padding: 4rem;
+
+    h1 {
+      font-size: 2.2rem;
+    }
+  }
+
+  .sgpm-p-settings__notifications {
+    margin: 4rem 2rem 1rem 2rem;
+
+    ul {
+      font-size: 1.8rem;
+      justify-content: space-between;
+    }
+  }
+
+  .sgpm-p-settings__delete-account {
+    margin: 1rem 2rem 4rem 2rem;
+    font-size: 1.8rem;
+  }
+}

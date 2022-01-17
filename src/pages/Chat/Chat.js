@@ -1,0 +1,91 @@
+import React, { useState } from 'react';
+import classNames from 'classnames';
+
+import { Button, Post, Input } from '../../components';
+
+import usePostData from './usePostData';
+
+function Chat() {
+  const posts = usePostData();
+  const [currentTab, setCurrentTab] = useState('posts');
+
+  return (
+    <div className="sgpm-p-chat">
+      <div className="sgpm-p-chat__switch-buttons">
+        <div
+          className={classNames(
+            `sgpm-p-chat__switch-button`,
+            `sgpm-p-chat__switch-button--posts`,
+            currentTab == 'posts' ? 'sgpm-p-chat__switch--button active' : null
+          )}
+          onClick={() => setCurrentTab('posts')}
+        >
+          <h4>Mural</h4>
+        </div>
+        <div
+          className={classNames(
+            `sgpm-p-chat__switch-button`,
+            `sgpm-p-chat__switch-button--conversation`,
+            currentTab == 'conversation'
+              ? 'sgpm-p-chat__switch--button active'
+              : null
+          )}
+          onClick={() => setCurrentTab('conversation')}
+        >
+          <h4>Suas conversas</h4>
+        </div>
+      </div>
+      <div
+        className={classNames(
+          `sgpm-p-chat__posts--top`,
+          currentTab == 'posts' ? 'sgpm-p-chat__posts--top active' : null
+        )}
+      >
+        <h2>Mural</h2>
+        <Button color="blue" text="Fazer publicação" />
+      </div>
+      <div
+        className={classNames(
+          `sgpm-p-chat__posts--body`,
+          currentTab == 'posts' ? 'sgpm-p-chat__posts--body active' : null
+        )}
+      >
+        <ul>
+          {posts?.map(postData => (
+            <li>
+              <Post
+                author={postData.author}
+                authorSpecialty={postData.authorSpecialty}
+                content={postData.content}
+                date={postData.date}
+              />
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div
+        className={classNames(
+          `sgpm-p-chat__conversation--top`,
+          currentTab == 'conversation'
+            ? 'sgpm-p-chat__conversation--top active'
+            : null
+        )}
+      >
+        <h2>Suas conversas</h2>
+      </div>
+      <div
+        className={classNames(
+          `sgpm-p-chat__conversation--body`,
+          currentTab == 'conversation'
+            ? 'sgpm-p-chat__conversation--body active'
+            : null
+        )}
+      >
+        <Input type="sb" placeHolder="Pesquisar nome e iniciar bate-papo" />
+        <h1>{`<Sem conversas ainda>`}</h1>
+      </div>
+    </div>
+  );
+}
+
+export default Chat;

@@ -1,0 +1,121 @@
+.sgpm-p-chat {
+  height: calc(100vh - 8rem);
+  display: grid;
+  grid-template-areas: 'posts--top conversation--top' 'posts--body conversation--body';
+  grid-template-columns: 60% 40%;
+  grid-template-rows: auto 1fr;
+  overflow-y: auto;
+
+  &__posts--top {
+    grid-area: posts--top;
+    padding: 2rem 15rem;
+    display: flex;
+    justify-content: space-between;
+
+    h2 {
+      font-size: 3.5rem;
+    }
+  }
+
+  &__posts--body {
+    overflow-y: auto;
+    grid-area: posts--body;
+
+    li {
+      margin: 2rem;
+    }
+  }
+
+  &__conversation--top {
+    display: flex;
+    justify-content: center;
+    padding: 2rem;
+    grid-area: conversation--top;
+
+    h2 {
+      font-size: 3.5rem;
+    }
+  }
+
+  &__conversation--body {
+    grid-area: conversation--body;
+    padding: 2rem 3rem;
+
+    input {
+      font-size: 2rem;
+      width: 100%;
+    }
+  }
+
+  &__switch-button {
+    display: none;
+  }
+}
+
+@media (max-width: 1400px) {
+  .sgpm-p-chat__posts--top {
+    padding: 2rem 10rem;
+  }
+}
+
+@media (max-width: 930px) {
+  .sgpm-p-chat {
+    display: flex;
+    flex-direction: column;
+
+    &__switch-buttons {
+      grid-area: switch-buttons;
+      display: flex;
+      flex-direction: row;
+      background-color: $gray;
+    }
+
+    &__switch-button {
+      display: flex;
+      height: 5rem;
+      width: 50%;
+      justify-content: center;
+      align-items: center;
+      border-top-left-radius: 2rem;
+      border-top-right-radius: 2rem;
+      background-color: $light-gray2;
+      font-size: 2.2rem;
+
+      &.active {
+        background-color: $light-gray;
+      }
+    }
+
+    &__posts--top,
+    &__conversation--top {
+      display: none;
+
+      &.active {
+        display: flex;
+        padding: 2rem 0;
+        justify-content: center;
+
+        h2 {
+          display: none;
+        }
+      }
+    }
+
+    &__posts--body,
+    &__conversation--body {
+      display: none;
+
+      &.active {
+        display: initial;
+      }
+    }
+  }
+}
+
+@media (max-width: 630px) {
+  .sgpm-p-chat__posts--top.active {
+    button {
+      font-size: 2rem;
+    }
+  }
+}

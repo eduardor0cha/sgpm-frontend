@@ -9,6 +9,7 @@
 @import './pages/login';
 @import './pages/help';
 @import './pages/settings';
+@import './pages/chat';
 
 //components
 @import './components/input';
@@ -18,3 +19,5 @@
 @import './components/layout';
 @import './components/header';
 @import './components/toggle-switch';
+@import './components/post';
+@import './components/scrollbar';

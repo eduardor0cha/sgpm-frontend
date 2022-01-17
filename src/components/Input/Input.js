@@ -1,18 +1,22 @@
 import React, { useState } from 'react';
 import classNames from 'classnames';
 import '../../styles/main.scss';
-import { VisibilityOffIcon, VisibilityOnIcon } from '../../assets/icons';
+import {
+  VisibilityOffIcon,
+  VisibilityOnIcon,
+  SearchIcon
+} from '../../assets/icons';
 
-function Input({ type, ...props }) {
+function Input({ type, onClick, ...props }) {
   const [visible = false, setVisible] = useState();
   function toggleVisibility() {
     setVisible(!visible);
   }
 
   return (
-    <div className="sgpm-c-input__container">
+    <div className={classNames(`sgpm-c-input`, `sgpm-c-input--${type}`)}>
       <input
-        className={classNames(`sgpm-c-input`, `sgpm-c-input--${type}`)}
+        className="sgpm-c-input__input"
         type={type === 'pw' ? (visible ? 'text' : 'password') : type}
         {...props}
       />
@@ -22,6 +26,10 @@ function Input({ type, ...props }) {
           onClick={toggleVisibility}
         >
           {visible ? <VisibilityOnIcon /> : <VisibilityOffIcon />}
+        </div>
+      ) : type === 'sb' ? (
+        <div className="sgpm-c-input__search-button" onClick={onClick}>
+          <SearchIcon />
         </div>
       ) : null}
     </div>

@@ -1,28 +1,51 @@
-.sgpm-c-input__container {
+.sgpm-c-input {
   display: flex;
   align-items: center;
-  svg {
-    width: 3rem;
-    margin-right: 0.5rem;
+  background-color: white;
+  border-radius: 2rem;
+
+  &--pw {
+    padding-right: 1rem;
+  }
+
+  &--sb {
+    padding-right: 1rem;
+  }
+
+  &__input {
+    background-color: transparent;
+    border: none;
+    padding: 0.8rem 1.5rem;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__visibility-button {
+    svg {
+      width: 3rem;
+    }
 
     &:hover {
       cursor: pointer;
     }
   }
-}
 
-.sgpm-c-input {
-  border: none;
-  //font-size: 2rem;
-  padding: 0.8rem 1.5rem;
-  border-radius: 2rem;
+  &__search-button {
+    svg {
+      width: 3rem;
+      fill: $dark-gray;
+    }
 
-  &:focus {
-    outline: none;
-  }
+    &:hover {
+      cursor: pointer;
+    }
 
-  &--pw {
-    @extend .sgpm-c-input;
-    margin-right: -3.5rem;
+    &:active {
+      svg {
+        fill: $gray;
+      }
+    }
   }
 }
