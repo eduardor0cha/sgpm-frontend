@@ -8,6 +8,7 @@
 
   &__header {
     grid-area: header;
+    height: 8rem;
   }
 
   &__sidebar {
@@ -17,6 +18,7 @@
 
   &__main {
     grid-area: main;
+    height: calc(100vh - 8rem);
   }
 }
 
@@ -33,6 +35,20 @@
     &__main {
       overflow-y: auto;
       max-width: 100%;
+    }
+  }
+}
+
+@media (max-width: 930px) {
+  .sgpm-c-layout {
+    &__header {
+      height: 6rem;
+
+      margin-left: 6rem;
+    }
+
+    &__main {
+      height: calc(100vh - 6rem);
     }
   }
 }

@@ -1,14 +1,16 @@
-import React from 'react';
-
+export {};
+/*
 function ToggleSwitch() {
   return (
-    <label class="sgpm-c-toggle-switch">
+    <label className="sgpm-c-toggle-switch">
       <div>
         <input type="checkbox" />
-        <span class="sgpm-c-toggle-switch__slider round"></span>
+        <span className="sgpm-c-toggle-switch__slider round"></span>
       </div>
     </label>
   );
 }
 
 export default ToggleSwitch;
+
+*/

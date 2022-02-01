@@ -1,5 +1,4 @@
-import React from 'react';
-
+/*
 function Help() {
   return (
     <div className="sgpm-p-help">
@@ -42,3 +41,4 @@ function Help() {
 }
 
 export default Help;
+*/

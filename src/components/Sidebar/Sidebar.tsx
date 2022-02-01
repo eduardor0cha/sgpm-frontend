@@ -1,7 +1,10 @@
-import React, { useState } from 'react';
+export {};
+/*
+import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+
 import classNames from 'classnames';
-import { Logo } from '../../assets/logo';
+
 import {
   LeftArrowIcon,
   MenuIcon,
@@ -14,9 +17,10 @@ import {
   HelpIcon
 } from '../../assets/icons';
 import GenericProfile from '../../assets/img/generic-profile.jpg';
+import Logo from '../../assets/logo';
 
 function Sidebar() {
-  const [collapsed, setCollapsed] = useState();
+  const [collapsed, setCollapsed] = useState(false);
   function toggleCollapsed() {
     setCollapsed(!collapsed);
   }
@@ -43,9 +47,9 @@ function Sidebar() {
               `sgpm-c-sidebar__link--profile`
             )}
             activeClassName="sgpm-c-sidebar__link--active"
-            exact={true}
+            exact
           >
-            <img src={GenericProfile} />
+            <img alt="profile" src={GenericProfile} />
             <span>Fulano de tal</span>
           </NavLink>
         </div>
@@ -56,7 +60,7 @@ function Sidebar() {
             `sgpm-c-sidebar__link--calendar`
           )}
           activeClassName="sgpm-c-sidebar__link--active"
-          exact={true}
+          exact
         >
           <CalendarIcon />
           <span>Calendário</span>
@@ -68,7 +72,7 @@ function Sidebar() {
             `sgpm-c-sidebar__link--presence`
           )}
           activeClassName="sgpm-c-sidebar__link--active"
-          exact={true}
+          exact
         >
           <CheckIcon />
           <span>Presença</span>
@@ -80,7 +84,7 @@ function Sidebar() {
             `sgpm-c-sidebar__link--swap`
           )}
           activeClassName="sgpm-c-sidebar__link--active"
-          exact={true}
+          exact
         >
           <ChangeIcon />
           <span>Solicitar troca</span>
@@ -92,7 +96,7 @@ function Sidebar() {
             `sgpm-c-sidebar__link--chat`
           )}
           activeClassName="sgpm-c-sidebar__link--active"
-          exact={true}
+          exact
         >
           <ChatIcon />
           <span>Chat</span>
@@ -104,7 +108,7 @@ function Sidebar() {
             `sgpm-c-sidebar__link--notifications`
           )}
           activeClassName="sgpm-c-sidebar__link--active"
-          exact={true}
+          exact
         >
           <NotificationIcon />
           <span>Notificações</span>
@@ -118,7 +122,7 @@ function Sidebar() {
             `sgpm-c-sidebar__link--settings`
           )}
           activeClassName="sgpm-c-sidebar__link--active"
-          exact={true}
+          exact
         >
           <SettingsIcon />
           <span>Configurações</span>
@@ -130,7 +134,7 @@ function Sidebar() {
             `sgpm-c-sidebar__link--help`
           )}
           activeClassName="sgpm-c-sidebar__link--active"
-          exact={true}
+          exact
         >
           <HelpIcon />
           <span>Ajuda</span>
@@ -141,3 +145,4 @@ function Sidebar() {
 }
 
 export default Sidebar;
+*/

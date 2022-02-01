@@ -1,4 +1,4 @@
-import React from 'react';
+/*
 import { Button, ToggleSwitch } from '../../components';
 
 function Settings() {
@@ -39,3 +39,5 @@ function Settings() {
 }
 
 export default Settings;
+
+*/

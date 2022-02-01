@@ -1,9 +1,8 @@
-import React from 'react';
 import '../../styles/main.scss';
 
-function Checkbox({ text }) {
+function Checkbox({ text }: { text: String }) {
   return (
-    <label class="sgpm-c-checkbox__container">
+    <label htmlFor="toggleswitch" className="sgpm-c-checkbox__container">
       <input type="checkbox" />
       {text}
     </label>

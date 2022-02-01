@@ -1,13 +1,30 @@
-import React, { useState } from 'react';
+/*
+import { useEffect, useState } from 'react';
+
 import classNames from 'classnames';
 
 import { Button, Post, Input } from '../../components';
-
-import usePostData from './usePostData';
+import getPosts from '../../services/Posts';
 
 function Chat() {
-  const posts = usePostData();
   const [currentTab, setCurrentTab] = useState('posts');
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    async function getData() {
+      const data = await getPosts();
+      setPosts(data);
+    }
+    getData();
+  }, []);
+
+  posts.sort(function (a, b) {
+    return a.publication.createdAt > b.publication.createdAt
+      ? -1
+      : a.publication.createdAt < b.publication.createdAt
+      ? 1
+      : 0;
+  });
 
   return (
     <div className="sgpm-p-chat">
@@ -16,7 +33,7 @@ function Chat() {
           className={classNames(
             `sgpm-p-chat__switch-button`,
             `sgpm-p-chat__switch-button--posts`,
-            currentTab == 'posts' ? 'sgpm-p-chat__switch--button active' : null
+            currentTab === 'posts' ? 'sgpm-p-chat__switch--button active' : null
           )}
           onClick={() => setCurrentTab('posts')}
         >
@@ -26,7 +43,7 @@ function Chat() {
           className={classNames(
             `sgpm-p-chat__switch-button`,
             `sgpm-p-chat__switch-button--conversation`,
-            currentTab == 'conversation'
+            currentTab === 'conversation'
               ? 'sgpm-p-chat__switch--button active'
               : null
           )}
@@ -38,7 +55,7 @@ function Chat() {
       <div
         className={classNames(
           `sgpm-p-chat__posts--top`,
-          currentTab == 'posts' ? 'sgpm-p-chat__posts--top active' : null
+          currentTab === 'posts' ? 'sgpm-p-chat__posts--top active' : null
         )}
       >
         <h2>Mural</h2>
@@ -47,26 +64,31 @@ function Chat() {
       <div
         className={classNames(
           `sgpm-p-chat__posts--body`,
-          currentTab == 'posts' ? 'sgpm-p-chat__posts--body active' : null
+          currentTab === 'posts' ? 'sgpm-p-chat__posts--body active' : null
         )}
       >
         <ul>
-          {posts?.map(postData => (
-            <li>
-              <Post
-                author={postData.author}
-                authorSpecialty={postData.authorSpecialty}
-                content={postData.content}
-                date={postData.date}
-              />
-            </li>
-          ))}
+          {posts?.map(post => {
+            const { author } = post.publication;
+
+            return (
+              <li key={post.publication.id}>
+                <Post
+                  authorFirstName={author.user.firstName}
+                  authorLastName={author.user.lastName}
+                  authorSpecialty={author.specialty}
+                  content={post.publication.content}
+                  date={post.publication.createdAt}
+                />
+              </li>
+            );
+          })}
         </ul>
       </div>
       <div
         className={classNames(
           `sgpm-p-chat__conversation--top`,
-          currentTab == 'conversation'
+          currentTab === 'conversation'
             ? 'sgpm-p-chat__conversation--top active'
             : null
         )}
@@ -76,7 +98,7 @@ function Chat() {
       <div
         className={classNames(
           `sgpm-p-chat__conversation--body`,
-          currentTab == 'conversation'
+          currentTab === 'conversation'
             ? 'sgpm-p-chat__conversation--body active'
             : null
         )}
@@ -89,3 +111,4 @@ function Chat() {
 }
 
 export default Chat;
+*/

@@ -1,5 +1,3 @@
-import React from 'react';
-
 const posts = [
   {
     author: 'Beltrano dos Santos',

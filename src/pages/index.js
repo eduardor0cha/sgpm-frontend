@@ -1,7 +1,6 @@
-import { Login } from './Login';
-import { Calendar } from './Calendar';
-import { Help } from './Help';
-import { Settings } from './Settings';
-import { Chat } from './Chat';
+// import { Chat } from './Chat';
+// import { Help } from './Help';
+import Login from './Login';
+// import { Settings } from './Settings';
 
-export { Login, Calendar, Help, Settings, Chat };
+export default Login;

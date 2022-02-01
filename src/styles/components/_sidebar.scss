@@ -148,3 +148,17 @@
     }
   }
 }
+
+@media (max-width: 930px) {
+  .sgpm-c-sidebar {
+    width: 6rem;
+
+    &__header {
+      height: 6rem;
+    }
+
+    &--colapsed {
+      width: 25rem;
+    }
+  }
+}

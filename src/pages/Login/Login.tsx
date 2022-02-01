@@ -1,9 +1,9 @@
-import React from 'react';
 import '../../styles/main.scss';
-import { Logo } from '../../assets/logo';
-import { PersonIcon } from '../../assets/icons';
-import { Input, Checkbox, Button } from '../../components';
 import { useHistory } from 'react-router-dom';
+
+import { PersonIcon } from '../../assets/icons';
+import Logo from '../../assets/logo';
+import { Input, Checkbox, Button } from '../../components';
 
 function Login() {
   const history = useHistory();
@@ -15,7 +15,7 @@ function Login() {
         <div className="sgpm-login__logo">
           <Logo />
           <h1>SGPM</h1>
-          <h>Sistema de Gerenciamento de Plantões Médicos</h>
+          <span>Sistema de Gerenciamento de Plantões Médicos</span>
         </div>
       </div>
       <div className="sgpm-login__frame-light-gray">
@@ -23,10 +23,10 @@ function Login() {
           <PersonIcon />
         </div>
         <div className="sgpm-login__email-input">
-          <Input type="email" placeHolder="E-mail ou nome de usuário" />
+          <Input type="email" placeholder="E-mail ou nome de usuário" />
         </div>
         <div className="sgpm-login__password-input">
-          <Input type="pw" placeHolder="Senha" />
+          <Input type="pw" placeholder="Senha" />
         </div>
         <div className="sgpm-login__checkbox">
           <Checkbox text="Lembre-se de mim" />
@@ -35,7 +35,7 @@ function Login() {
           <Button color="blue" text="Entrar" onClick={handleClick} />
         </div>
         <div className="sgpm-login__forgot-password">
-          <a href="">Esqueceu a senha?</a>
+          <a href=".">Esqueceu a senha?</a>
         </div>
       </div>
     </div>
