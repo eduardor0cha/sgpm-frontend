@@ -1,16 +1,20 @@
+import React from 'react';
+
 import classNames from 'classnames';
+
+type ButtonProps = {
+  size?: String;
+  color: String;
+  text: String;
+  onClick?: any;
+};
 
 function Button({
   size,
   color,
   text,
   onClick
-}: {
-  size?: String;
-  color: String;
-  text: String;
-  onClick: any;
-}) {
+}: ButtonProps & React.ButtonHTMLAttributes<HTMLButtonElement>) {
   return (
     <button
       className={classNames(

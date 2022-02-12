@@ -1,13 +1,21 @@
 import GenericProfile from '../../assets/img/generic-profile.jpg';
 import humanizeDate from '../../helpers/date';
 
-function Post(
-  authorFirstName: String,
-  authorLastName: String,
-  authorSpecialty: String,
-  content: String,
-  date: Date
-) {
+type PostProps = {
+  authorFirstName: String;
+  authorLastName?: String;
+  authorSpecialty: String;
+  content: String;
+  date: Date;
+};
+
+function Post({
+  authorFirstName,
+  authorLastName,
+  authorSpecialty,
+  content,
+  date
+}: PostProps) {
   return (
     <div className="sgpm-c-post">
       <div className="sgpm-c-post__content">

@@ -1,12 +1,14 @@
 import './App.scss';
+import 'dotenv/config';
+import { AuthProvider } from './contexts/AuthProvider';
 import Routes from './routes';
-
-require('dotenv').config();
 
 function App() {
   return (
     <div className="App">
-      <Routes />
+      <AuthProvider>
+        <Routes />
+      </AuthProvider>
     </div>
   );
 }

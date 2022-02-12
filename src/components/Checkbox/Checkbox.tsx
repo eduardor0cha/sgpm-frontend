@@ -1,8 +1,8 @@
 import '../../styles/main.scss';
 
-function Checkbox({ text }: { text: String }) {
+function Checkbox({ text }: { text: string }) {
   return (
-    <label htmlFor="toggleswitch" className="sgpm-c-checkbox__container">
+    <label htmlFor="checkbox" className="sgpm-c-checkbox__container">
       <input type="checkbox" />
       {text}
     </label>

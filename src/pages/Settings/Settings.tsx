@@ -1,4 +1,3 @@
-/*
 import { Button, ToggleSwitch } from '../../components';
 
 function Settings() {
@@ -8,15 +7,15 @@ function Settings() {
         <h1>NOTIFICAÇÕES</h1>
         <ul className="sgpm-p-settings__notifications--list">
           <li>
-            <spam>Receber notificações por e-mail</spam>
+            <span>Receber notificações por e-mail</span>
             <ToggleSwitch />
           </li>
           <li>
-            <spam>Receber notificações de mensagens</spam>
+            <span>Receber notificações de mensagens</span>
             <ToggleSwitch />
           </li>
           <li>
-            <spam>Receber notificações dos plantões</spam>
+            <span>Receber notificações dos plantões</span>
             <ToggleSwitch />
           </li>
         </ul>
@@ -39,5 +38,3 @@ function Settings() {
 }
 
 export default Settings;
-
-*/

@@ -50,8 +50,8 @@ const posts = [
   }
 ];
 
-function usePostData() {
+function getPostData() {
   return posts;
 }
 
-export default usePostData;
+export default getPostData;

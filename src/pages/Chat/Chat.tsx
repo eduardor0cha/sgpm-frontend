@@ -1,35 +1,30 @@
-/*
 import { useEffect, useState } from 'react';
 
 import classNames from 'classnames';
 
 import { Button, Post, Input } from '../../components';
-import getPosts from '../../services/Posts';
+import { PostType } from '../../models';
+import GetPosts from '../../services/Posts';
 
 function Chat() {
   const [currentTab, setCurrentTab] = useState('posts');
-  const [posts, setPosts] = useState([]);
+  const [posts, setPosts] = useState<Array<PostType>>([]);
 
   useEffect(() => {
     async function getData() {
-      const data = await getPosts();
+      const data = await GetPosts();
+
       setPosts(data);
     }
     getData();
-  }, []);
-
-  posts.sort(function (a, b) {
-    return a.publication.createdAt > b.publication.createdAt
-      ? -1
-      : a.publication.createdAt < b.publication.createdAt
-      ? 1
-      : 0;
-  });
+  }, [setPosts]);
 
   return (
     <div className="sgpm-p-chat">
       <div className="sgpm-p-chat__switch-buttons">
         <div
+          role="button"
+          aria-hidden="true"
           className={classNames(
             `sgpm-p-chat__switch-button`,
             `sgpm-p-chat__switch-button--posts`,
@@ -40,6 +35,8 @@ function Chat() {
           <h4>Mural</h4>
         </div>
         <div
+          role="button"
+          aria-hidden="true"
           className={classNames(
             `sgpm-p-chat__switch-button`,
             `sgpm-p-chat__switch-button--conversation`,
@@ -103,7 +100,7 @@ function Chat() {
             : null
         )}
       >
-        <Input type="sb" placeHolder="Pesquisar nome e iniciar bate-papo" />
+        <Input type="sb" placeholder="Pesquisar nome e iniciar bate-papo" />
         <h1>{`<Sem conversas ainda>`}</h1>
       </div>
     </div>
@@ -111,4 +108,3 @@ function Chat() {
 }
 
 export default Chat;
-*/

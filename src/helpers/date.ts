@@ -1,4 +1,4 @@
-function humanizeDate(date) {
+function humanizeDate(date: Date) {
   const parsedDate = new Date(date);
 
   let month;
@@ -55,7 +55,7 @@ function humanizeDate(date) {
     default:
   }
 
-  const delta = Math.round((+new Date() - parsedDate) / 1000);
+  const delta = Math.round((+new Date() - +parsedDate) / 1000);
 
   const minute = 60;
   const hour = minute * 60;
@@ -67,7 +67,7 @@ function humanizeDate(date) {
   let humanizedDate;
 
   if (parsedDate < delimiter) {
-    const delta2 = Math.round((delimiter - +parsedDate) / 1000);
+    const delta2 = Math.round((+delimiter - +parsedDate) / 1000);
     if (delta2 < day) {
       humanizedDate = `Ontem, às ${
         parsedDate.getHours() < 10

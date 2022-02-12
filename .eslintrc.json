@@ -94,5 +94,8 @@
         "react/prop-types": "off"
       }
     }
-  ]
+  ],
+  "globals": {
+    "JSX": "readonly"
+  }
 }

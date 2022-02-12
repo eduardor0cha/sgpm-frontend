@@ -1,4 +1,3 @@
-/*
 function Help() {
   return (
     <div className="sgpm-p-help">
@@ -6,22 +5,22 @@ function Help() {
         <h1>FAQ</h1>
         <ul className="sgpm-p-help__faq--list">
           <li>
-            <spam>• </spam>
-            <a href="">Como responder uma solicitação de troca?</a>
+            <span>• </span>
+            <a href=".">Como responder uma solicitação de troca?</a>
           </li>
           <li>
-            <spam>• </spam>
-            <a href="">Como proceder em um imprevisto?</a>
+            <span>• </span>
+            <a href=".">Como proceder em um imprevisto?</a>
           </li>
           <li>
-            <spam>• </spam>
-            <a href="">
+            <span>• </span>
+            <a href=".">
               Como alterar os dados postos inicialmente ao criar uma conta?
             </a>
           </li>
           <li>
-            <spam>• </spam>
-            <a href="">Como posso entrar em contato com outros médicos?</a>
+            <span>• </span>
+            <a href=".">Como posso entrar em contato com outros médicos?</a>
           </li>
         </ul>
       </div>
@@ -29,10 +28,10 @@ function Help() {
         <h1>CONTATOS</h1>
         <ul className="sgpm-p-help__contact--list">
           <li>
-            <spam>{`<Email do responsável>`}</spam>
+            <span>{`<Email do responsável>`}</span>
           </li>
           <li>
-            <spam>{`<Número para contato>`}</spam>
+            <span>{`<Número para contato>`}</span>
           </li>
         </ul>
       </div>
@@ -41,4 +40,3 @@ function Help() {
 }
 
 export default Help;
-*/

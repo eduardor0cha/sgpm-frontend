@@ -1,5 +1,3 @@
-export {};
-/*
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
@@ -32,8 +30,11 @@ function Sidebar() {
           <Logo />
         </div>
         <div
+          role="button"
+          aria-hidden="true"
           className="sgpm-c-sidebar__toggle-button"
           onClick={toggleCollapsed}
+          onKeyDown={toggleCollapsed}
         >
           {collapsed ? <LeftArrowIcon /> : <MenuIcon />}
         </div>
@@ -145,4 +146,3 @@ function Sidebar() {
 }
 
 export default Sidebar;
-*/
