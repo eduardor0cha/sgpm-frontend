@@ -1,9 +1,14 @@
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
+import useAuth from '../../contexts/AuthProvider/useAuth';
+import Button from '../Button';
+
 function Header() {
   const [currentPage, setCurrentPage] = useState(String);
   const location = useLocation();
+
+  const { logout } = useAuth();
 
   useEffect(() => {
     switch (location.pathname) {
@@ -48,6 +53,7 @@ function Header() {
   return (
     <div className="sgpm-c-header">
       <h1>{currentPage}</h1>
+      <Button color="blue" text="Sair" onClick={() => logout()} />
     </div>
   );
 }
