@@ -18,7 +18,8 @@ import GenericProfile from '../../assets/img/generic-profile.jpg';
 import Logo from '../../assets/logo';
 
 function Sidebar() {
-  const [collapsed, setCollapsed] = useState(false);
+  const [collapsed, setCollapsed] = useState<boolean>(false);
+
   function toggleCollapsed() {
     setCollapsed(!collapsed);
   }
@@ -51,7 +52,7 @@ function Sidebar() {
             exact
           >
             <img alt="profile" src={GenericProfile} />
-            <span>Fulano de tal</span>
+            <span>Fulano</span>
           </NavLink>
         </div>
         <NavLink

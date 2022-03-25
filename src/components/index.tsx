@@ -4,18 +4,7 @@ import Header from './Header';
 import Input from './Input';
 import Layout from './Layout';
 import Post from './Post';
-import ProtectedRoute from './ProtectedRoute';
 import Sidebar from './Sidebar';
 import ToggleSwitch from './ToggleSwitch';
 
-export {
-  Checkbox,
-  Button,
-  Layout,
-  Header,
-  Post,
-  Input,
-  Sidebar,
-  ToggleSwitch,
-  ProtectedRoute
-};
+export { Checkbox, Button, Layout, Header, Post, Input, Sidebar, ToggleSwitch };

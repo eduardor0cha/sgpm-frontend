@@ -1,23 +1,21 @@
 import '../../styles/main.scss';
 
 import { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
 import { PersonIcon } from '../../assets/icons';
 import Logo from '../../assets/logo';
 import { Input, Checkbox, Button } from '../../components';
-import useAuth from '../../contexts/AuthProvider/useAuth';
 
 function Login() {
-  const [email, setEmail] = useState<string>();
-  const [password, setPassword] = useState<string>();
-  const auth = useAuth();
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+  const history = useHistory();
 
-  const handleSubmit = (e: any) => {
+  function handleSubmit(e: any) {
     e.preventDefault();
-    if (email || password) {
-      auth.authenticate(email, password);
-    }
-  };
+    history.push('/calendar');
+  }
 
   return (
     <div className="sgpm-login">
