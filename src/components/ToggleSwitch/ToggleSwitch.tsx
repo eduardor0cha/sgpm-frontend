@@ -1,21 +1,26 @@
 type ToggleSwitchProps = {
+  name: string;
   checked?: boolean;
   disabled?: boolean;
   handleChange: any;
 };
 
-function ToggleSwitch({ checked, disabled, handleChange }: ToggleSwitchProps) {
+function ToggleSwitch({
+  name,
+  checked,
+  disabled = false,
+  handleChange
+}: ToggleSwitchProps) {
   return (
-    <label className="sgpm-c-toggle-switch" htmlFor="toggleswitch">
-      <div>
-        <input
-          type="checkbox"
-          checked={checked}
-          disabled={disabled}
-          onChange={event => handleChange(event)}
-        />
-        <span className="sgpm-c-toggle-switch__slider round" />
-      </div>
+    <label className="sgpm-c-toggle-switch" htmlFor={name}>
+      <input
+        type="checkbox"
+        id={name}
+        checked={checked}
+        disabled={disabled}
+        onChange={event => handleChange(event)}
+      />
+      <span className="sgpm-c-toggle-switch__slider" />
     </label>
   );
 }

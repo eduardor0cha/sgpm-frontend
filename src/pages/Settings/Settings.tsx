@@ -8,15 +8,15 @@ function Settings() {
         <ul className="sgpm-p-settings__notifications--list">
           <li>
             <span>Receber notificações por e-mail</span>
-            <ToggleSwitch handleChange={() => {}} />
+            <ToggleSwitch name="e-mail switch" handleChange={() => {}} />
           </li>
           <li>
             <span>Receber notificações de mensagens</span>
-            <ToggleSwitch handleChange={() => {}} />
+            <ToggleSwitch name="message switch" handleChange={() => {}} />
           </li>
           <li>
             <span>Receber notificações dos plantões</span>
-            <ToggleSwitch handleChange={() => {}} />
+            <ToggleSwitch name="duties switch" handleChange={() => {}} />
           </li>
         </ul>
       </div>
