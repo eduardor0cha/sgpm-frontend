@@ -1,9 +1,17 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { useLocation } from 'react-router-dom';
+
+import { Context } from '../../Context/AuthContext';
+import Button from '../Button';
 
 function Header() {
   const [currentPage, setCurrentPage] = useState(String);
   const location = useLocation();
+  const { handleLogout } = useContext(Context);
+
+  function handleClick() {
+    handleLogout();
+  }
 
   useEffect(() => {
     switch (location.pathname) {
@@ -48,6 +56,7 @@ function Header() {
   return (
     <div className="sgpm-c-header">
       <h1>{currentPage}</h1>
+      <Button color="blue" text="Sair" onClick={() => handleClick()} />
     </div>
   );
 }

@@ -1,20 +1,23 @@
 import '../../styles/main.scss';
 
-import { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useState, useContext } from 'react';
 
 import { PersonIcon } from '../../assets/icons';
 import Logo from '../../assets/logo';
 import { Input, Checkbox, Button } from '../../components';
+import { Context } from '../../Context/AuthContext';
+import validateEmail from '../../helpers/email';
 
 function Login() {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
-  const history = useHistory();
+  const { handleLogin } = useContext(Context);
 
   function handleSubmit(e: any) {
     e.preventDefault();
-    history.push('/calendar');
+    if (email && password && validateEmail(email)) {
+      handleLogin(email, password);
+    }
   }
 
   return (
