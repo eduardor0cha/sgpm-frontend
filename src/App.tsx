@@ -1,6 +1,6 @@
 import './App.scss';
 import 'dotenv/config';
-import { AuthProvider } from './Context/AuthContext';
+import { AuthProvider } from './context/AuthContext';
 import Routes from './routes';
 
 function App() {

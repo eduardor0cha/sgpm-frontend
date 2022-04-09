@@ -5,7 +5,7 @@ import { useState, useContext } from 'react';
 import { PersonIcon } from '../../assets/icons';
 import Logo from '../../assets/logo';
 import { Input, Checkbox, Button } from '../../components';
-import { Context } from '../../Context/AuthContext';
+import { Context } from '../../context/AuthContext';
 import validateEmail from '../../helpers/email';
 
 function Login() {

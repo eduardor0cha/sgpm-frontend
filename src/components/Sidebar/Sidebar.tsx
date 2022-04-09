@@ -16,7 +16,7 @@ import {
 } from '../../assets/icons';
 import GenericProfile from '../../assets/img/generic-profile.jpg';
 import Logo from '../../assets/logo';
-import { Context } from '../../Context/AuthContext';
+import { Context } from '../../context/AuthContext';
 
 function Sidebar() {
   const { userData } = useContext(Context);

@@ -1,7 +1,7 @@
 import { useEffect, useState, useContext } from 'react';
 import { useLocation } from 'react-router-dom';
 
-import { Context } from '../../Context/AuthContext';
+import { Context } from '../../context/AuthContext';
 import Button from '../Button';
 
 function Header() {
