@@ -8,6 +8,7 @@ function Checkbox({
   return (
     <label htmlFor="checkbox" className="sgpm-c-checkbox__container">
       <input type="checkbox" {...props} />
+      <span className="sgpm-c-checkbox__checkmark" />
       {text}
     </label>
   );

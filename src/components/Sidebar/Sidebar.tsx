@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 
 import classNames from 'classnames';
@@ -16,18 +16,11 @@ import {
 } from '../../assets/icons';
 import GenericProfile from '../../assets/img/generic-profile.jpg';
 import Logo from '../../assets/logo';
-import { UserData } from '../../models';
-import { getUserByToken } from '../../services/User';
+import { Context } from '../../Context/AuthContext';
 
 function Sidebar() {
-  const [userData, setUserData] = useState<UserData>();
+  const { userData } = useContext(Context);
   const [collapsed, setCollapsed] = useState<boolean>(false);
-
-  useEffect(() => {
-    getUserByToken().then(data => {
-      setUserData(data);
-    });
-  });
 
   function toggleCollapsed() {
     setCollapsed(!collapsed);

@@ -26,6 +26,5 @@ export async function getUserByToken(): Promise<UserData> {
       }
     }
   );
-
   return user.json();
 }
