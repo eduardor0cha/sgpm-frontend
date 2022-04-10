@@ -1,5 +1,3 @@
-import React from 'react';
-
 function PersonIcon() {
   return (
     <svg focusable="false" viewBox="0 0 24 24">
