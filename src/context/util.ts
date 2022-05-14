@@ -21,7 +21,5 @@ export default async function login(
     }
   );
 
-  console.log(`${process.env.REACT_APP_API_URL}/auth/authenticate`);
-
   return data.json();
 }
