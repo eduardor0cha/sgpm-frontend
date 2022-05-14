@@ -10,7 +10,7 @@ export default async function login(
   password: string
 ): Promise<loginData> {
   const data = await fetch(
-    `https://sgpm-backend.herokuapp.com/auth/authenticate`,
+    `${process.env.REACT_APP_API_URL}/auth/authenticate`,
     {
       headers: {
         Accept: 'application/json',
@@ -20,6 +20,8 @@ export default async function login(
       body: JSON.stringify({ email, password })
     }
   );
+
+  console.log(`${process.env.REACT_APP_API_URL}/auth/authenticate`);
 
   return data.json();
 }
