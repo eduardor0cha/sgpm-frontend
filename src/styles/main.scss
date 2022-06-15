@@ -2,7 +2,7 @@
 @import './abstracts/variables';
 
 //base
-@import './base/topography';
+@import './base/typography';
 @import './base/reset';
 
 //pages
@@ -10,6 +10,7 @@
 @import './pages/help';
 @import './pages/settings';
 @import './pages/chat';
+@import './pages/profile';
 
 //components
 @import './components/input';
