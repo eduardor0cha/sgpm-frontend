@@ -1,0 +1,52 @@
+.sgpm-c-input {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  * {
+    color: $black;
+    font-size: 1rem;
+  }
+
+  &__required-indicator {
+    color: $red-200;
+  }
+
+  &__field {
+    width: 100%;
+    display: flex;
+    border: solid $gray-400 2px;
+    border-radius: 4px;
+    transition: linear 0.1s;
+
+    &:focus-within {
+      border: solid $red-300 2px;
+    }
+
+    input {
+      outline: none;
+      border: none;
+      padding: 0.3rem;
+      width: 100%;
+      background-color: transparent;
+    }
+  }
+
+  &__toggle-visibility-btn {
+    margin-right: 0.2rem;
+    display: flex;
+    align-items: center;
+    padding: 0rem;
+    border: none;
+    background-color: transparent;
+
+    svg {
+      font-size: 1.5rem;
+      fill: $gray-500;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

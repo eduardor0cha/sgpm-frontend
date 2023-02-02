@@ -1,6 +1,6 @@
-import { Medic, Moderator } from "../../models";
+import { UserType } from "./UserRoles";
 
 export type LoginResponse = {
-  user: Medic | Moderator;
+  user: UserType;
   token: string;
 };

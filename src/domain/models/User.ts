@@ -1,3 +1,4 @@
+import { UserRole } from "../types";
 import Address from "./Address";
 
 class User {
@@ -6,7 +7,7 @@ class User {
   email: string;
   name: string;
   gender: string;
-  role: string;
+  role: UserRole;
   phoneNumber?: string;
   address: Address;
   profilePic?: string;
@@ -26,13 +27,12 @@ class User {
     createdAt?: Date;
     updatedAt?: Date;
   }) {
-    console.log(props);
     this.cpf = props?.cpf ?? "";
     this.username = props?.username ?? "";
     this.email = props?.email ?? "";
     this.name = props?.name ?? "";
     this.gender = props?.gender ?? "";
-    this.role = props?.role ?? "";
+    this.role = (props?.role as UserRole) ?? "";
     this.phoneNumber = props?.phoneNumber;
     this.address = props?.address ?? new Address();
     this.profilePic = props?.profilePic;

@@ -1,4 +1,4 @@
-import { Medic } from "../../domain/models";
+import { Medic, Moderator } from "../../domain/models";
 import { LoginResponse } from "../../domain/types";
 import { UserRole } from "../../domain/types/Auth/UserRoles";
 import APIClient from "../APIClient";
@@ -18,7 +18,7 @@ class AuthAPI {
         };
       case "moderator":
         return {
-          user: Medic.fromJSON(response.data.user),
+          user: Moderator.fromJSON(response.data.user),
           token: response.data.token,
         };
     }
@@ -31,9 +31,9 @@ class AuthAPI {
     return true;
   }
 
-  static removeAuthToken(token: string): boolean {
+  static removeAuthToken(): boolean {
     APIClient.defaults.headers.common = {
-      Authorization: `Bearer ${token}`,
+      Authorization: undefined,
     };
     return true;
   }
