@@ -4,10 +4,7 @@ type Props = {
 
 function Checkbox({
   className,
-  type,
   label,
-  id,
-  name,
   ...props
 }: Props & React.InputHTMLAttributes<HTMLInputElement>) {
   return (
