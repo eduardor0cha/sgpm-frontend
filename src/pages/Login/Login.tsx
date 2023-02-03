@@ -2,8 +2,18 @@ import { Button, Checkbox, Input } from "../../components";
 import LogoRedLine from "../../assets/logo/LogoRedLine";
 import LogoWhiteline from "../../assets/logo/LogoWhiteLine";
 import { Form } from "../../components/Form";
+import { useAuthContext } from "../../contexts/AuthContext/AuthContext";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 function LoginPage() {
+  const { loggedUser } = useAuthContext();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (loggedUser) navigate("/calendar", { replace: true });
+  }, [loggedUser, navigate]);
+
   return (
     <div className="sgpm-p-login">
       <div className="sgpm-p-login__logo">

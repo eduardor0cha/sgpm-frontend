@@ -1,6 +1,6 @@
 import { Medic, Moderator } from "../../domain/models";
 import { LoginResponse } from "../../domain/types";
-import { UserRole } from "../../domain/types/Auth/UserRoles";
+import { UserRole, UserType } from "../../domain/types/Auth/UserRoles";
 import APIClient from "../APIClient";
 
 class AuthAPI {
@@ -21,6 +21,22 @@ class AuthAPI {
           user: Moderator.fromJSON(response.data.user),
           token: response.data.token,
         };
+    }
+  }
+
+  static async checkToken(token: string): Promise<UserType | null> {
+    const response = await APIClient.post("/auth/login/token", {
+      token: token,
+    });
+
+    if (!response.data.isValid || !response.data.user) return null;
+
+    switch (response.data.user.role as UserRole) {
+      case "medic":
+        return Medic.fromJSON(response.data.user);
+
+      case "moderator":
+        return Moderator.fromJSON(response.data.user);
     }
   }
 

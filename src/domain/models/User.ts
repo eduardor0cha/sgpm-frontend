@@ -47,7 +47,7 @@ class User {
     user.email = json["email"];
     user.name = json["name"];
     user.gender = json["gender"];
-    user.role = json["role"];
+    user.role = json["role"] as UserRole;
     user.phoneNumber = json["phoneNumber"];
     user.address = Address.fromJSON(json);
     user.profilePic = json["profilePic"];
