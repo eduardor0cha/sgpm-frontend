@@ -5,7 +5,7 @@ type Props = {
 };
 
 export type FormHandlers = {
-  getValues(): Record<string, any>;
+  getValues(): Record<string, any> | undefined;
   setValues(values: Record<string, any>): void;
 };
 
@@ -24,7 +24,7 @@ function Form(
     onSubmit();
   }
 
-  function getValues(): Record<string, any> {
+  function getValues(): Record<string, any> | undefined {
     const json: Record<string, any> = {};
     if (!formRef.current) return json;
     for (const child of formRef.current.children) {
@@ -37,6 +37,7 @@ function Form(
               break;
 
             default:
+              if (input.required && !input.value) return;
               json[input.name] = input.value;
           }
         }

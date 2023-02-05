@@ -1,3 +1,3 @@
-import { getErrorMessage } from "./Error";
+import { getErrorMessage } from "./ErrorUtils";
 
 export { getErrorMessage };

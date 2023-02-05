@@ -12,7 +12,11 @@ import { getErrorMessage } from "../../utils";
 import { ToastContext } from "../ToastContext";
 
 type Props = {
-  login(login: string, password: string): Promise<boolean | undefined>;
+  login(
+    login: string,
+    password: string,
+    rememberMe: boolean
+  ): Promise<boolean | undefined>;
   checkToken(login: string, token: string): Promise<void>;
   loggedUser: UserType | null | undefined;
 };
@@ -28,13 +32,26 @@ function AuthProvider({ children }: PropsWithChildren) {
   const { showToast } = useContext(ToastContext);
   const [loggedUser, setLoggedUser] = useState<UserType | null>();
 
-  const setAuthCredentials = useCallback((login: string, token: string) => {
-    AuthAPI.setAuthToken(token);
-    localStorage.setItem(
-      "userCredentials",
-      JSON.stringify({ login: login, token: token })
-    );
-  }, []);
+  const setAuthCredentials = useCallback(
+    (login: string, token: string, rememberMe: boolean) => {
+      AuthAPI.setAuthToken(token);
+
+      if (rememberMe) {
+        localStorage.setItem(
+          "userCredentials",
+          JSON.stringify({ login: login, token: token })
+        );
+        sessionStorage.removeItem("userCredentials");
+      } else {
+        sessionStorage.setItem(
+          "userCredentials",
+          JSON.stringify({ login: login, token: token })
+        );
+        localStorage.removeItem("userCredentials");
+      }
+    },
+    []
+  );
 
   const removeAuthCredentials = useCallback((login?: string) => {
     AuthAPI.removeAuthToken();
@@ -43,30 +60,34 @@ function AuthProvider({ children }: PropsWithChildren) {
     } else {
       localStorage.removeItem("userCredentials");
     }
+    sessionStorage.removeItem("userCredentials");
   }, []);
 
   const checkToken = useCallback(
     async (login: string, token: string) => {
       try {
         const response = await AuthAPI.checkToken(token);
-
         setLoggedUser(response);
 
         if (!response) removeAuthCredentials(login);
-        else setAuthCredentials(login, token);
+        AuthAPI.setAuthToken(token);
       } catch (error) {
         showToast("danger", getErrorMessage(error));
       }
     },
-    [showToast, removeAuthCredentials, setAuthCredentials]
+    [showToast, removeAuthCredentials]
   );
 
   const login = useCallback(
-    async (login: string, password: string): Promise<boolean | undefined> => {
+    async (
+      login: string,
+      password: string,
+      rememberMe: boolean
+    ): Promise<boolean | undefined> => {
       try {
         const response = await AuthAPI.login(login, password);
         if (!response) return false;
-        setAuthCredentials(login, response.token);
+        setAuthCredentials(login, response.token, rememberMe);
         setLoggedUser(response.user);
         return true;
       } catch (error) {
@@ -79,12 +100,23 @@ function AuthProvider({ children }: PropsWithChildren) {
   useEffect(() => {
     if (loggedUser !== undefined) return;
 
-    const { token, login } = JSON.parse(
+    const { token: tokenSS, login: loginSS } = JSON.parse(
+      sessionStorage.getItem("userCredentials") ?? "{}"
+    );
+    if (tokenSS) {
+      checkToken(loginSS, tokenSS);
+      return;
+    }
+
+    const { token: tokenLS, login: loginLS } = JSON.parse(
       localStorage.getItem("userCredentials") ?? "{}"
     );
+    if (tokenLS) {
+      checkToken(loginLS, tokenLS);
+      return;
+    }
 
-    if (!token) setLoggedUser(null);
-    else checkToken(login, token);
+    setLoggedUser(null);
   }, [checkToken, loggedUser]);
 
   return (
