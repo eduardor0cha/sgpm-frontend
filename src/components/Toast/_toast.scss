@@ -11,7 +11,7 @@
 
 .sgpm-c-single-toast {
   display: flex;
-  background-color: $white;
+  background-color: var(--white);
   top: 12px;
   right: 12px;
   transition: transform 0.6s ease-in-out;
@@ -21,7 +21,7 @@
   height: 100px;
   gap: 1rem;
   border-radius: 8px;
-  box-shadow: 0 0 8px $black;
+  box-shadow: 0 0 8px var(--black);
 
   &__icon {
     display: flex;
@@ -38,26 +38,26 @@
     }
 
     &.success {
-      color: $green-300;
+      color: var(--green-300);
 
       .sgpm-c-single-toast__icon--bar {
-        background-color: $green-300;
+        background-color: var(--green-300);
       }
     }
 
     &.warning {
-      color: $yellow-300;
+      color: var(--yellow-300);
 
       .sgpm-c-single-toast__icon--bar {
-        background-color: $yellow-300;
+        background-color: var(--yellow-300);
       }
     }
 
     &.danger {
-      color: $red-300;
+      color: var(--red-300);
 
       .sgpm-c-single-toast__icon--bar {
-        background-color: $red-300;
+        background-color: var(--red-300);
       }
     }
   }

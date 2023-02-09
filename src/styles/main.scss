@@ -1,5 +1,6 @@
-// Abstratcs
-@import "./abstracts/variables/colors";
+// Theme
+@import "./theme/general";
+@import "./theme/tokens";
 
 // Base
 @import "./base/reset";

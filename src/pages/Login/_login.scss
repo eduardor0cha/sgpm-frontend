@@ -1,5 +1,5 @@
 .sgpm-p-login {
-  background-color: $gray-100;
+  background-color: var(--surface-color);
   padding: 2rem;
   min-height: 100vh;
   display: flex;
@@ -8,6 +8,7 @@
   &__logo {
     text-align: center;
     padding: 0 2rem 2rem 2rem;
+    color: var(--title-color);
 
     svg {
       width: 12rem;
@@ -33,14 +34,16 @@
     width: 100%;
     max-width: 500px;
     align-self: center;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 
     &-title {
       font-size: 1.5rem;
+      color: var(--title-color);
     }
 
     &-field {
       margin-top: 2rem;
+
+      color: var(--text-color);
     }
   }
 
@@ -48,11 +51,14 @@
     margin-top: 1rem;
     display: flex;
     justify-content: space-between;
+
+    color: var(--text-color);
+    border-color: var(--text-color);
   }
 
   &__forgot-password {
     text-decoration: none;
-    color: $red-300;
+    color: var(--primary-on-surface);
     font-weight: bold;
 
     &:hover {
@@ -68,13 +74,13 @@
 
 @media only screen and (min-width: 992px) {
   .sgpm-p-login {
+    background-color: var(--red-600);
     flex-direction: row;
-    background-color: $red-400;
     gap: 2rem;
     justify-content: space-around;
 
     &__logo {
-      color: $white;
+      color: var(--white);
       align-self: center;
       max-width: 650px;
       padding: 0;
@@ -103,9 +109,10 @@
     }
 
     &__form {
-      background-color: $gray-100;
+      background-color: var(--surface-color);
       padding: 4rem 3rem;
       border-radius: 8px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
     }
   }
 }
@@ -113,9 +120,6 @@
 @media only screen and (min-width: 1400px) {
   .sgpm-p-login {
     &__form {
-      background-color: $gray-100;
-      padding: 4rem 3rem;
-      border-radius: 8px;
       max-width: 650px;
     }
   }

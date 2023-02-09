@@ -10,6 +10,7 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  color: var(--text-color);
 }
 
 /* Hide the browser's default checkbox */
@@ -28,8 +29,7 @@
   height: 1rem;
   width: 1rem;
   border-radius: 4px;
-  background-color: #eee;
-  border: solid $black 1px;
+  border: solid var(--neutral-on-surface) 1px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -42,8 +42,8 @@
 
 /* When the checkbox is checked, add a blue background */
 .sgpm-c-checkbox input:checked ~ .checkmark {
-  background-color: $red-400;
-  border-color: $red-400;
+  background-color: var(--primary-on-surface);
+  border-color: var(--primary-on-surface);
 }
 
 /* Create the checkmark/indicator (hidden when not checked) */
@@ -61,7 +61,7 @@
 .sgpm-c-checkbox .checkmark:after {
   width: 5px;
   height: 10px;
-  border: solid $white;
+  border: solid var(--white);
   border-width: 0 2px 2px 0;
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);

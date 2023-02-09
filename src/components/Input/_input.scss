@@ -4,23 +4,23 @@
   gap: 0.5rem;
 
   * {
-    color: $black;
+    color: var(--text-color);
     font-size: 1rem;
   }
 
   &__required-indicator {
-    color: $red-200;
+    color: var(--red-500);
   }
 
   &__field {
     width: 100%;
     display: flex;
-    border: solid $gray-400 2px;
+    border: solid var(--neutral-on-surface) 2px;
     border-radius: 4px;
     transition: linear 0.1s;
 
     &:focus-within {
-      border: solid $red-300 2px;
+      border: solid var(--primary-on-surface) 2px;
     }
 
     input {
@@ -42,7 +42,7 @@
 
     svg {
       font-size: 1.5rem;
-      fill: $gray-500;
+      fill: var(--neutral-on-surface);
     }
 
     &:hover {

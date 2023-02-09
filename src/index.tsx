@@ -8,6 +8,7 @@ import "./styles/main.scss";
 import { ToastsContainer } from "./components/Toast";
 import { ToastProvider } from "./contexts";
 import { AuthProvider } from "./contexts/AuthContext";
+import ThemeProvider from "./contexts/ThemeContext/ThemeContext";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -15,12 +16,14 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <ToastProvider>
-        <AuthProvider>
-          <App />
-        </AuthProvider>
-        <ToastsContainer />
-      </ToastProvider>
+      <ThemeProvider>
+        <ToastProvider>
+          <AuthProvider>
+            <App />
+          </AuthProvider>
+          <ToastsContainer />
+        </ToastProvider>
+      </ThemeProvider>
     </BrowserRouter>
   </React.StrictMode>
 );
