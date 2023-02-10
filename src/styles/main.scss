@@ -1,3 +1,7 @@
+// Abstracts
+@import "./abstracts/functions/breakpoints";
+@import "./abstracts/variables/breakpoints";
+
 // Theme
 @import "./theme/general";
 @import "./theme/tokens";
