@@ -59,12 +59,12 @@ function ThemeProvider({ children }: PropsWithChildren) {
 
       if (!userPreferences.theme) toggleTheme("light");
       else toggleTheme(userPreferences.theme);
+    } else {
+      document.documentElement.classList.remove(
+        `theme--${theme === "light" ? "dark" : "light"}`
+      );
+      document.documentElement.classList.add(`theme--${theme}`);
     }
-
-    document.documentElement.classList.remove(
-      `theme--${theme === "light" ? "dark" : "light"}`
-    );
-    document.documentElement.classList.add(`theme--${theme}`);
   }, [theme, toggleTheme]);
 
   return (
