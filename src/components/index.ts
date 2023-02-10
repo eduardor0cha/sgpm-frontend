@@ -1,5 +1,21 @@
 import { Input } from "./Input";
 import { Checkbox } from "./Checkbox";
-import Button from "./Button";
+import { Button } from "./Button";
+import { Form } from "./Form";
+import { Header } from "./Header";
+import { Layout } from "./Layout";
+import { ProtectedRoute } from "./ProtectedRoute";
+import { ToastsContainer as Toast } from "./Toast";
+import { Sidebar } from "./Sidebar";
 
-export { Input, Checkbox, Button };
+export {
+  Input,
+  Checkbox,
+  Button,
+  Form,
+  Header,
+  Layout,
+  ProtectedRoute,
+  Toast,
+  Sidebar,
+};

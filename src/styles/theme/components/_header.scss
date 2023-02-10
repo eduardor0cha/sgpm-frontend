@@ -1,0 +1,7 @@
+:root {
+  --header-bg-color: var(--gray-100);
+
+  &.theme--dark {
+    --header-bg-color: var(--gray-800);
+  }
+}

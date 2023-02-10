@@ -5,6 +5,7 @@
 // Theme
 @import "./theme/general";
 @import "./theme/tokens";
+@import "./theme/components/header";
 
 // Base
 @import "./base/reset";
@@ -18,3 +19,6 @@
 @import "../components/Checkbox/checkbox";
 @import "../components/Button/button";
 @import "../components/Toast/toast";
+@import "../components/Layout/layout";
+@import "../components/Sidebar/sidebar";
+@import "../components/Header/header";
