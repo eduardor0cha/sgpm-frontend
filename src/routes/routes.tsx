@@ -1,11 +1,11 @@
 import { Route } from "../domain/types";
-import { LoginPage } from "../pages";
+import { LoginPage, NotFound } from "../pages";
 
 const routes: Route[] = [
   {
     path: "*",
     title: "404",
-    element: <div>404</div>,
+    element: <NotFound />,
     isProtected: false,
     useDefaultLayout: false,
   },
