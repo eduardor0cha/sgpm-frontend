@@ -7,6 +7,7 @@ import { Layout } from "./Layout";
 import { ProtectedRoute } from "./ProtectedRoute";
 import { ToastsContainer as Toast } from "./Toast";
 import { Sidebar } from "./Sidebar";
+import { AccountMenu } from "./AccountMenu";
 
 export {
   Input,
@@ -18,4 +19,5 @@ export {
   ProtectedRoute,
   Toast,
   Sidebar,
+  AccountMenu,
 };

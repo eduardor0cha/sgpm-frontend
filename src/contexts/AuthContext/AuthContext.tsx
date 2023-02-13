@@ -17,13 +17,14 @@ type Props = {
     password: string,
     rememberMe: boolean
   ): Promise<boolean | undefined>;
+  logout(): boolean | undefined;
   checkToken(login: string, token: string): Promise<void>;
   loggedUser: UserType | null | undefined;
 };
 
 export const AuthContext = createContext({} as Props);
 
-export function useAuthContext() {
+export function useAuth() {
   const context = useContext(AuthContext);
   return context;
 }
@@ -97,6 +98,16 @@ function AuthProvider({ children }: PropsWithChildren) {
     [showToast, setAuthCredentials]
   );
 
+  const logout = useCallback(() => {
+    try {
+      removeAuthCredentials();
+      setLoggedUser(null);
+      return true;
+    } catch (error) {
+      showToast("danger", getErrorMessage(error));
+    }
+  }, [removeAuthCredentials, showToast]);
+
   useEffect(() => {
     if (loggedUser !== undefined) return;
 
@@ -123,6 +134,7 @@ function AuthProvider({ children }: PropsWithChildren) {
     <AuthContext.Provider
       value={{
         login,
+        logout,
         checkToken,
         loggedUser,
       }}

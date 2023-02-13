@@ -9,4 +9,5 @@ export type Route = {
   isProtected: boolean;
   allowedRoles?: "all" | UserRole[];
   useDefaultLayout: boolean;
+  showOnMenu: boolean;
 };

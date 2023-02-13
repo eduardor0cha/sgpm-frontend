@@ -1,0 +1,7 @@
+:root {
+  --account-menu-background-color: var(--gray-100);
+
+  &.theme--dark {
+    --account-menu-background-color: var(--gray-700);
+  }
+}

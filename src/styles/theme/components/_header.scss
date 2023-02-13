@@ -1,7 +1,9 @@
 :root {
-  --header-bg-color: var(--gray-100);
+  --header-background-color: var(--gray-100);
+  --header-title-color: var(--red-600);
 
   &.theme--dark {
-    --header-bg-color: var(--gray-800);
+    --header-background-color: var(--gray-800);
+    --header-title-color: var(--gray-100);
   }
 }

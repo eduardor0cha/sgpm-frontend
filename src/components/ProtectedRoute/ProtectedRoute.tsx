@@ -1,5 +1,6 @@
 import { Navigate } from "react-router-dom";
-import { useAuthContext } from "../../contexts/AuthContext/AuthContext";
+import { useAuth } from "../../contexts";
+
 import { UserRole } from "../../domain/types";
 import { NotFound } from "../../pages";
 
@@ -9,7 +10,7 @@ type ProtectedRouteProps = {
 };
 
 function ProtectedRoute({ allowedRoles, element }: ProtectedRouteProps) {
-  const { loggedUser } = useAuthContext();
+  const { loggedUser } = useAuth();
 
   if (loggedUser === undefined) return null;
   if (!loggedUser) return <Navigate to="/login" />;

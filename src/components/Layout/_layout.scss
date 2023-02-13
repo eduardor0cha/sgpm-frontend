@@ -9,6 +9,7 @@
 
   &__sidebar {
     grid-area: sidebar;
+    z-index: 8;
   }
 
   &__main {

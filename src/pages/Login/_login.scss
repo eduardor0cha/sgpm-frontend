@@ -8,7 +8,7 @@
   &__logo {
     text-align: center;
     padding: 0 2rem 2rem 2rem;
-    color: var(--title-color);
+    color: var(--strong-neutral-text-color);
 
     svg {
       width: 12rem;
@@ -37,13 +37,13 @@
 
     &-title {
       font-size: 1.5rem;
-      color: var(--title-color);
+      color: var(--strong-neutral-text-color);
     }
 
     &-field {
       margin-top: 2rem;
 
-      color: var(--text-color);
+      color: var(--normal-neutral-text-color);
     }
   }
 
@@ -52,13 +52,13 @@
     display: flex;
     justify-content: space-between;
 
-    color: var(--text-color);
-    border-color: var(--text-color);
+    color: var(--normal-neutral-text-color);
+    border-color: var(--normal-neutral-text-color);
   }
 
   &__forgot-password {
     text-decoration: none;
-    color: var(--primary-on-surface);
+    color: var(--primary-text-color);
     font-weight: bold;
 
     &:hover {

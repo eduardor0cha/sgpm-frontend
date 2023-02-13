@@ -8,6 +8,7 @@ const routes: Route[] = [
     element: <NotFound />,
     isProtected: false,
     useDefaultLayout: false,
+    showOnMenu: false,
   },
   {
     path: "/",
@@ -15,6 +16,7 @@ const routes: Route[] = [
     element: <LoginPage />,
     isProtected: false,
     useDefaultLayout: false,
+    showOnMenu: false,
   },
   {
     path: "/login",
@@ -22,6 +24,7 @@ const routes: Route[] = [
     element: <LoginPage />,
     isProtected: false,
     useDefaultLayout: false,
+    showOnMenu: false,
   },
   {
     path: "/calendar",
@@ -30,6 +33,16 @@ const routes: Route[] = [
     isProtected: true,
     allowedRoles: ["medic"],
     useDefaultLayout: true,
+    showOnMenu: true,
+  },
+  {
+    path: "/profile",
+    title: "Perfil",
+    element: <div>Perfil</div>,
+    isProtected: true,
+    allowedRoles: "all",
+    useDefaultLayout: true,
+    showOnMenu: false,
   },
 ];
 

@@ -8,10 +8,9 @@ function NotFound() {
     <div className="sgpm-p-not-found">
       <h1>Oops!</h1>
       <h2>404 - Página não encontrada</h2>
-      <Button
-        label="Voltar ao início"
-        onClick={() => navigate("/", { replace: true })}
-      />
+      <Button onClick={() => navigate("/", { replace: true })}>
+        Voltar ao início
+      </Button>
     </div>
   );
 }

@@ -2,18 +2,28 @@ import { Button, Checkbox, Input } from "../../components";
 import LogoRedLine from "../../assets/logo/LogoRedLine";
 import LogoWhiteline from "../../assets/logo/LogoWhiteLine";
 import { Form } from "../../components/Form";
-import { useAuthContext } from "../../contexts/AuthContext/AuthContext";
 import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { FormHandlers } from "../../components/Form/Form";
+import { useAuth } from "../../contexts";
 
 function LoginPage() {
-  const { loggedUser, login } = useAuthContext();
+  const { loggedUser, login } = useAuth();
   const navigate = useNavigate();
   const formRef = useRef<FormHandlers>(null);
 
   useEffect(() => {
-    if (loggedUser) navigate("/calendar", { replace: true });
+    if (loggedUser) {
+      switch (loggedUser.role) {
+        case "medic":
+          navigate("/calendar", { replace: true });
+          break;
+
+        case "moderator":
+          navigate("/general-calendar", { replace: true });
+          break;
+      }
+    }
 
     const { login: loginLS } = JSON.parse(
       localStorage.getItem("userCredentials") ?? "{}"
@@ -63,11 +73,9 @@ function LoginPage() {
               Esqueceu a senha?
             </a>
           </div>
-          <Button
-            label="Entrar"
-            className="sgpm-p-login__submit-button"
-            type="submit"
-          />
+          <Button className="sgpm-p-login__submit-button" type="submit">
+            Entrar
+          </Button>
         </Form>
       </div>
     </div>

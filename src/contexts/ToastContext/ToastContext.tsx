@@ -1,4 +1,4 @@
-import { createContext, PropsWithChildren, useState } from "react";
+import { createContext, PropsWithChildren, useContext, useState } from "react";
 import { Toast, ToastType } from "../../domain/types/";
 import { v4 as uuid } from "uuid";
 
@@ -10,6 +10,11 @@ type Props = {
 };
 
 export const ToastContext = createContext({} as Props);
+
+export function useToast() {
+  const context = useContext(ToastContext);
+  return context;
+}
 
 function ToastProvider({ children }: PropsWithChildren) {
   const [toasts, setToasts] = useState<Toast[]>([]);

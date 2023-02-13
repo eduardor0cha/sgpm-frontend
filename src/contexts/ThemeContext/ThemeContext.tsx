@@ -2,6 +2,7 @@ import {
   createContext,
   PropsWithChildren,
   useCallback,
+  useContext,
   useEffect,
   useState,
 } from "react";
@@ -14,6 +15,11 @@ type Props = {
 };
 
 export const ThemeContext = createContext({} as Props);
+
+export function useTheme() {
+  const context = useContext(ThemeContext);
+  return context;
+}
 
 function ThemeProvider({ children }: PropsWithChildren) {
   const [theme, setTheme] = useState<Themes>();

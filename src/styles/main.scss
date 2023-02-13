@@ -6,6 +6,7 @@
 @import "./theme/general";
 @import "./theme/tokens";
 @import "./theme/components/header";
+@import "./theme/components/account-menu";
 
 // Base
 @import "./base/reset";
@@ -23,3 +24,4 @@
 @import "../components/Layout/layout";
 @import "../components/Sidebar/sidebar";
 @import "../components/Header/header";
+@import "../components/AccountMenu/account-menu";
