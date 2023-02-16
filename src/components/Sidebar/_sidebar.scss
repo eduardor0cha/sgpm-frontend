@@ -1,3 +1,147 @@
 .sgpm-c-sidebar {
-  background-color: var(--primary-on-surface);
+  background-color: var(--sidebar-background-color);
+  color: var(--gray-100);
+  width: 100%;
+  height: 3rem;
+
+  &__header {
+    padding: 0.5rem;
+    height: 3rem;
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  &__logo {
+    display: none;
+    position: absolute;
+    height: 80%;
+  }
+
+  &__toggle-button {
+    width: auto;
+    height: 100%;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__items {
+    display: none;
+    flex-direction: column;
+    padding: 1rem 0;
+    gap: 2rem;
+  }
+
+  &__item {
+    text-decoration: none;
+    height: 3rem;
+    color: var(--gray-100);
+    align-items: center;
+    display: flex;
+    padding: 0.5rem 0 0.5rem 25vw;
+    gap: 1rem;
+    font-size: 1.2rem;
+    border-left: 3px solid transparent;
+
+    svg {
+      height: 100%;
+      width: max-content;
+    }
+
+    &.active {
+      border-left: 3px solid var(--gray-100);
+    }
+  }
+
+  &.collapsed {
+    display: block;
+    width: 100vw;
+    height: 100vh;
+    animation: left-to-right 0.3s;
+
+    .sgpm-c-sidebar {
+      &__header {
+        border-bottom: 2px solid var(--sidebar-stroke-color);
+        height: 4rem;
+        padding: 0.5rem;
+      }
+
+      &__logo {
+        display: initial;
+      }
+
+      &__toggle-button {
+        margin-left: auto;
+      }
+
+      &__items {
+        display: flex;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: breakpoint(sm)) {
+  .sgpm-c-sidebar {
+    height: 100vh;
+    width: 4rem;
+    transition: width 0.2s ease-out;
+
+    &__header {
+      border-bottom: 2px solid var(--sidebar-stroke-color);
+      height: 4rem;
+    }
+
+    &__items {
+      display: flex;
+    }
+
+    &__item {
+      padding-left: 0;
+      font-size: 1.2rem;
+      border-left: 3px solid transparent;
+      justify-content: center;
+
+      span {
+        display: none;
+      }
+
+      svg {
+        height: 100%;
+        width: max-content;
+      }
+
+      &.active {
+        border-left: 3px solid var(--gray-100);
+      }
+    }
+
+    &.collapsed {
+      width: 20rem;
+      animation: none;
+
+      .sgpm-c-sidebar {
+        &__item {
+          justify-content: start;
+          padding-left: 2rem;
+
+          span {
+            display: initial;
+          }
+        }
+      }
+    }
+  }
+}
+
+@keyframes left-to-right {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
 }

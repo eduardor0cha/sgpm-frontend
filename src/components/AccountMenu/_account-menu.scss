@@ -2,8 +2,8 @@
   position: relative;
 
   &__profile-pic {
-    height: 50px;
-    width: 50px;
+    height: 30px;
+    width: 30px;
     border-radius: 50%;
     object-fit: cover;
 
@@ -39,6 +39,15 @@
       cursor: pointer;
       background-color: var(--red-500);
       color: var(--white);
+    }
+  }
+}
+
+@media only screen and (min-width: breakpoint(sm)) {
+  .sgpm-c-account-menu {
+    &__profile-pic {
+      height: 40px;
+      width: 40px;
     }
   }
 }

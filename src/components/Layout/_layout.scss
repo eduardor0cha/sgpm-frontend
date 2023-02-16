@@ -3,9 +3,9 @@
   display: grid;
   grid-template-areas:
     "sidebar header"
-    "sidebar main";
-  grid-template-columns: auto 1fr;
-  grid-template-rows: 5rem 1fr;
+    "main main";
+  grid-template-columns: 3rem 1fr;
+  grid-template-rows: 3rem 1fr;
 
   &__sidebar {
     grid-area: sidebar;
@@ -14,5 +14,25 @@
 
   &__main {
     grid-area: main;
+  }
+}
+
+@media only screen and (min-width: breakpoint(sm)) {
+  .sgpm-c-layout {
+    grid-template-areas:
+      "sidebar header"
+      "sidebar main";
+    grid-template-columns: 4rem 1fr;
+    grid-template-rows: 4rem 1fr;
+  }
+}
+
+@media only screen and (min-width: breakpoint(md)) {
+  .sgpm-c-layout {
+    grid-template-areas:
+      "sidebar header"
+      "sidebar main";
+    grid-template-columns: auto 1fr;
+    grid-template-rows: 4rem 1fr;
   }
 }

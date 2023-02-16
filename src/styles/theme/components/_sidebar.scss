@@ -1,0 +1,9 @@
+:root {
+  --sidebar-background-color: var(--red-600);
+  --sidebar-stroke-color: var(--red-800);
+
+  &.theme--dark {
+    --sidebar-background-color: var(--gray-700);
+    --sidebar-stroke-color: var(--gray-200);
+  }
+}

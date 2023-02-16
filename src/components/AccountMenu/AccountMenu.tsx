@@ -17,11 +17,13 @@ function AccountMenu() {
   };
 
   useEffect(() => {
-    document.addEventListener("click", handleClickOutside, true);
-    return () => {
-      document.removeEventListener("click", handleClickOutside, true);
-    };
-  }, [theme.theme]);
+    if (collapsed) {
+      document.addEventListener("click", handleClickOutside, true);
+      return () => {
+        document.removeEventListener("click", handleClickOutside, true);
+      };
+    }
+  }, [theme.theme, collapsed]);
 
   return (
     <div className="sgpm-c-account-menu" ref={ref}>
@@ -44,6 +46,18 @@ function AccountMenu() {
             onClick={() => theme.toggleTheme()}
           >
             Alterar tema
+          </button>
+          <button
+            className="sgpm-c-account-menu__item"
+            onClick={() => navigate("/settings")}
+          >
+            Configurações
+          </button>
+          <button
+            className="sgpm-c-account-menu__item"
+            onClick={() => navigate("/help")}
+          >
+            Ajuda
           </button>
           <button
             className="sgpm-c-account-menu__item"
