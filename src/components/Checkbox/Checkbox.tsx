@@ -10,7 +10,7 @@ function Checkbox({
   return (
     <label className="sgpm-c-checkbox">
       <input type="checkbox" {...props} />
-      <span className="checkmark"></span>
+      <span className="sgpm-c-checkbox__checkmark"></span>
       {label}
     </label>
   );
