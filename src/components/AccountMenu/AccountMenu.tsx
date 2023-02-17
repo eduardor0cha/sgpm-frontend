@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth, useTheme } from "../../contexts";
+import { ToggleSwitch } from "../ToggleSwitch";
 
 function AccountMenu() {
   const auth = useAuth();
@@ -14,6 +15,11 @@ function AccountMenu() {
       event.preventDefault();
       setCollapsed(false);
     }
+  };
+
+  const handleClick = (event: any) => {
+    event.preventDefault();
+    theme.toggleTheme();
   };
 
   useEffect(() => {
@@ -43,9 +49,10 @@ function AccountMenu() {
           </button>
           <button
             className="sgpm-c-account-menu__item"
-            onClick={() => theme.toggleTheme()}
+            onClick={(event) => handleClick(event)}
           >
-            Alterar tema
+            Tema escuro
+            <ToggleSwitch initialValue={theme.theme === "dark"} />
           </button>
           <button
             className="sgpm-c-account-menu__item"
