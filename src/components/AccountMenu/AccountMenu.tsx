@@ -17,9 +17,14 @@ function AccountMenu() {
     }
   };
 
-  const handleClick = (event: any) => {
+  const handleToggleTheme = (event: any) => {
     event.preventDefault();
     theme.toggleTheme();
+  };
+
+  const handleNavigate = (path: string) => {
+    setCollapsed(false);
+    navigate(path);
   };
 
   useEffect(() => {
@@ -43,26 +48,26 @@ function AccountMenu() {
         <div className="sgpm-c-account-menu__card">
           <button
             className="sgpm-c-account-menu__item"
-            onClick={() => navigate("/profile")}
+            onClick={() => handleNavigate("/profile")}
           >
             Perfil
           </button>
           <button
             className="sgpm-c-account-menu__item"
-            onClick={(event) => handleClick(event)}
+            onClick={(event) => handleToggleTheme(event)}
           >
             Tema escuro
             <ToggleSwitch initialValue={theme.theme === "dark"} />
           </button>
           <button
             className="sgpm-c-account-menu__item"
-            onClick={() => navigate("/settings")}
+            onClick={() => handleNavigate("/settings")}
           >
             Configurações
           </button>
           <button
             className="sgpm-c-account-menu__item"
-            onClick={() => navigate("/help")}
+            onClick={() => handleNavigate("/help")}
           >
             Ajuda
           </button>
