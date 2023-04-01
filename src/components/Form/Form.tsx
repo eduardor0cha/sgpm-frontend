@@ -71,6 +71,7 @@ function Form(
 
   return (
     <form
+      className="sgpm-c-form"
       ref={formRef}
       onSubmit={(event) => handleSubmit(event)}
       {...props}

@@ -13,8 +13,8 @@ class Medic extends User {
   static fromJSON(json: Record<string, any>): Medic {
     const medic = new Medic({
       user: User.fromJSON(json),
-      crm: json["crm"],
-      specialty: json["specialty"],
+      crm: json.medic.crm,
+      specialty: json.medic.specialty,
     });
     return medic;
   }

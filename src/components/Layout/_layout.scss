@@ -12,8 +12,17 @@
     z-index: 8;
   }
 
+  &__header {
+    z-index: 6;
+  }
+
   &__main {
     grid-area: main;
+
+    > * {
+      margin: 0 auto;
+      max-width: 80rem;
+    }
   }
 }
 

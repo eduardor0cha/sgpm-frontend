@@ -1,5 +1,5 @@
 import { Route } from "../domain/types";
-import { LoginPage, NotFound } from "../pages";
+import { LoginPage, NotFound, ProfilePage } from "../pages";
 import { IoMdCalendar } from "react-icons/io";
 import {
   MdChat,
@@ -38,7 +38,7 @@ const routes: Route[] = [
   {
     path: "/profile",
     title: "Perfil",
-    element: <div>Perfil</div>,
+    element: <ProfilePage />,
     isProtected: true,
     allowedRoles: "all",
     useDefaultLayout: true,

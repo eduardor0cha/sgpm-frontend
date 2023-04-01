@@ -1,0 +1,7 @@
+:root {
+  --modal-background-color: var(--gray-100);
+
+  &.theme--dark {
+    --modal-background-color: var(--gray-700);
+  }
+}

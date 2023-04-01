@@ -17,4 +17,10 @@
   &:active {
     background-color: var(--red-700);
   }
+
+  &.transparent {
+    background-color: transparent;
+    color: var(--button-transparent-bg-font-color);
+    font-weight: bold;
+  }
 }

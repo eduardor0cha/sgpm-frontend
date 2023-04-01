@@ -1,0 +1,7 @@
+:root {
+  --button-transparent-bg-font-color: var(--red-600);
+
+  &.theme--dark {
+    --button-transparent-bg-font-color: var(--gray-100);
+  }
+}

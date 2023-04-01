@@ -1,0 +1,120 @@
+.sgpm-p-profile {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  gap: 1rem;
+
+  &__info-container {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--surface-color);
+    box-shadow: 0 2px 8px var(--shadow-color);
+    border-radius: 4px;
+    padding: 1rem;
+
+    span {
+      line-height: 1.5rem;
+      color: var(--normal-neutral-text-color);
+    }
+
+    &-fields {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  &__button {
+    margin-top: 1.5rem;
+    align-self: center;
+  }
+
+  &__main-info {
+    h4 {
+      color: var(--strong-neutral-text-color);
+      font-size: 1.2rem;
+      margin: 1rem 0 0.5rem 0;
+    }
+
+    span {
+      line-break: anywhere;
+    }
+
+    &--infos {
+      div {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+  }
+
+  &__profile-pic {
+    align-self: center;
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    aspect-ratio: 1;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__personal-data,
+  &__change-password {
+    h4 {
+      color: var(--primary-text-color);
+      font-weight: bold;
+      margin: 1rem 0;
+    }
+  }
+}
+
+@media only screen and (min-width: breakpoint(sm)) {
+  .sgpm-p-profile {
+    display: grid;
+    grid-template-areas:
+      "main-info main-info"
+      "personal-data change-password";
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto 1fr;
+    gap: 0;
+
+    &__info-container {
+      background-color: transparent;
+      box-shadow: none;
+      border-radius: 0;
+      padding: 1rem;
+    }
+
+    &__main-info {
+      grid-area: main-info;
+      flex-direction: row;
+      align-items: center;
+      gap: 1rem;
+
+      h4 {
+        margin: 0;
+      }
+
+      &--infos {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        column-gap: 1rem;
+      }
+    }
+
+    &__profile-pic {
+      height: 150px;
+      width: 150px;
+    }
+
+    &__modal-content--fields {
+      > div {
+        display: grid;
+        gap: 1rem;
+      }
+    }
+  }
+}
