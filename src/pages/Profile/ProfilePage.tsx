@@ -5,6 +5,13 @@ import { Modal } from "../../components/Modal";
 import { ModalHandlers } from "../../components/Modal/Modal";
 import { useAuth } from "../../contexts";
 import { Medic } from "../../domain/models";
+import {
+  formatCPF,
+  formatPhoneNumber,
+  formatPostalCode,
+  translateGender,
+  translateRole,
+} from "../../utils/FormatUtils";
 
 function ProfilePage() {
   const auth = useAuth();
@@ -29,7 +36,7 @@ function ProfilePage() {
           <div className="sgpm-p-profile__main-info--infos">
             <div>
               <h4>{auth.loggedUser?.name}</h4>
-              <span>{auth.loggedUser?.role}</span>
+              <span>{translateRole(auth.loggedUser?.role)}</span>
               {auth.loggedUser?.role === "medic" ? (
                 <span>{`CRM ${(auth.loggedUser as Medic).crm}`}</span>
               ) : null}
@@ -42,12 +49,18 @@ function ProfilePage() {
         </div>
         <div className="sgpm-p-profile__personal-data sgpm-p-profile__info-container">
           <h4>Dados pessoais</h4>
-          <span>{`Sexo: ${auth.loggedUser?.gender}`}</span>
-          <span>{`CPF: ${auth.loggedUser?.cpf}`}</span>
-          <span>{`Telefone: ${auth.loggedUser?.phoneNumber}`}</span>
+          <span>{`Sexo: ${translateGender(
+            auth.loggedUser?.gender
+          )?.toLowerCase()}`}</span>
+          <span>{`CPF: ${formatCPF(auth.loggedUser?.cpf)}`}</span>
+          <span>{`Telefone: ${formatPhoneNumber(
+            auth.loggedUser?.phoneNumber
+          )}`}</span>
           <h4>Endereço</h4>
           <span>{`${auth.loggedUser?.address.street}, ${auth.loggedUser?.address.number}`}</span>
-          <span>{`${auth.loggedUser?.address.city.name} - ${auth.loggedUser?.address.state.name}, ${auth.loggedUser?.address.postalCode}`}</span>
+          <span>{`${auth.loggedUser?.address.city.name} - ${
+            auth.loggedUser?.address.state.name
+          }, ${formatPostalCode(auth.loggedUser?.address.postalCode)}`}</span>
           <span>Brasil</span>
           <Button
             className="sgpm-p-profile__button"
