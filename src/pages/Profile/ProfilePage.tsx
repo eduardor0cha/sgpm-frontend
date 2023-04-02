@@ -1,4 +1,4 @@
-import { CSSProperties, useCallback, useRef } from "react";
+import { CSSProperties, useCallback, useContext, useRef } from "react";
 import { Button, Form, Input } from "../../components";
 import { FormHandlers } from "../../components/Form/Form";
 import { Modal } from "../../components/Modal";
@@ -17,11 +17,22 @@ function ProfilePage() {
   const auth = useAuth();
   const formRef = useRef<FormHandlers>(null);
   const modalRef = useRef<ModalHandlers>(null);
+  const { updatePassword } = useAuth();
 
-  const handleChangePassword = useCallback(() => {
+  const handleChangePassword = useCallback(async () => {
     const values = formRef.current?.getValues();
 
     if (!values) return;
+
+    const currentPsswd = values["current-password"];
+    const newPsswd = values["new-password"];
+    const confirmPsswd = values["confirm-password"];
+
+    const response = await updatePassword(currentPsswd, newPsswd, confirmPsswd);
+
+    if (!response) return;
+
+    formRef.current?.clearValues();
   }, []);
 
   return (
