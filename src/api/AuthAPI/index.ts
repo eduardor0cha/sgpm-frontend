@@ -53,6 +53,18 @@ class AuthAPI {
     };
     return true;
   }
+
+  static async updatePassword(
+    password: string,
+    newPassword: string
+  ): Promise<string> {
+    const response = await APIClient.post("/auth/update-password", {
+      password: password,
+      newPassword: newPassword,
+    });
+
+    return response.data.message;
+  }
 }
 
 export default AuthAPI;
