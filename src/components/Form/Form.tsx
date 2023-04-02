@@ -7,6 +7,7 @@ type Props = {
 export type FormHandlers = {
   getValues(): Record<string, any> | undefined;
   setValues(values: Record<string, any>): void;
+  clearValues(): void;
 };
 
 function Form(
@@ -67,7 +68,24 @@ function Form(
     }
   }
 
-  useImperativeHandle(ref, () => ({ getValues, setValues }));
+  function clearValues(): void {
+    if (!formRef.current) return;
+    for (const child of formRef.current.children) {
+      const inputs = child.getElementsByTagName("input");
+      for (const input of inputs) {
+        switch (input.type) {
+          case "checkbox":
+            input.checked = false;
+            break;
+
+          default:
+            input.value = "";
+        }
+      }
+    }
+  }
+
+  useImperativeHandle(ref, () => ({ getValues, setValues, clearValues }));
 
   return (
     <form
