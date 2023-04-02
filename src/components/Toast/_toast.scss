@@ -7,11 +7,12 @@
   transition: transform 0.6s ease-in-out;
   animation: toast-in-right 0.7s;
   gap: 1rem;
+  z-index: 32;
 }
 
 .sgpm-c-single-toast {
   display: flex;
-  background-color: var(--white);
+  background-color: var(--toast-background-color);
   top: 12px;
   right: 12px;
   transition: transform 0.6s ease-in-out;
@@ -21,7 +22,7 @@
   height: 100px;
   gap: 1rem;
   border-radius: 8px;
-  box-shadow: 0 0 8px var(--black);
+  box-shadow: 0 0 8px var(--shadow-color);
 
   &__icon {
     display: flex;
@@ -29,6 +30,7 @@
     svg {
       font-size: 3rem;
       align-self: center;
+      color: --strong-neutral-text-color;
     }
 
     &--bar {
@@ -38,32 +40,33 @@
     }
 
     &.success {
-      color: var(--green-300);
+      color: var(--success-color);
 
       .sgpm-c-single-toast__icon--bar {
-        background-color: var(--green-300);
+        background-color: var(--success-color);
       }
     }
 
     &.warning {
-      color: var(--yellow-300);
+      color: var(--warning-color);
 
       .sgpm-c-single-toast__icon--bar {
-        background-color: var(--yellow-300);
+        background-color: var(--warning-color);
       }
     }
 
     &.danger {
-      color: var(--red-300);
+      color: var(--danger-color);
 
       .sgpm-c-single-toast__icon--bar {
-        background-color: var(--red-300);
+        background-color: var(--danger-color);
       }
     }
   }
 
   &__message {
     align-self: center;
+    color: var(--strong-neutral-text-color);
   }
 
   button {
@@ -76,6 +79,7 @@
 
     svg {
       font-size: 1.5rem;
+      color: var(--strong-neutral-text-color);
     }
 
     &:hover {

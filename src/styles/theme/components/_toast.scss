@@ -1,0 +1,7 @@
+:root {
+  --toast-background-color: var(--gray-100);
+
+  &.theme--dark {
+    --toast-background-color: var(--gray-400);
+  }
+}
