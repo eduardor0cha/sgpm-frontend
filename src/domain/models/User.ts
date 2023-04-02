@@ -57,7 +57,7 @@ class User {
   }
 
   toJSON(): Record<string, any> {
-    const json: Record<string, any> = {};
+    var json: Record<string, any> = {};
     json["cpf"] = this.cpf;
     json["username"] = this.username;
     json["email"] = this.email;
@@ -65,7 +65,7 @@ class User {
     json["gender"] = this.gender;
     json["role"] = this.role;
     json["phoneNumber"] = this.phoneNumber;
-    json.push(this.address.toJSON());
+    json = { ...json, ...this.address.toJSON() };
     json["createdAt"] = this.createdAt;
     json["updatedAt"] = this.updatedAt;
     return json;

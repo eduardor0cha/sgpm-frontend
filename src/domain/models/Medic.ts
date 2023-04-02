@@ -20,8 +20,8 @@ class Medic extends User {
   }
 
   toJSON(): Record<string, any> {
-    const json: Record<string, any> = {};
-    json.push(super.toJSON());
+    var json: Record<string, any> = {};
+    json = { ...json, ...super.toJSON() };
     json["medic"] = {
       crm: this.specialty,
       specialty: this.specialty,

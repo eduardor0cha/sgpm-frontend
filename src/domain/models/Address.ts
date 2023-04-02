@@ -37,13 +37,13 @@ class Address {
   }
 
   toJSON(): Record<string, any> {
-    const json: Record<string, any> = {};
+    var json: Record<string, any> = {};
     json["street"] = this.street;
     json["number"] = this.number;
     json["postalCode"] = this.postalCode;
     json["district"] = this.district;
-    json.push(this.city.toJSON());
-    json.push(this.state.toJSON());
+    json = { ...json, ...this.city.toJSON() };
+    json = { ...json, ...this.state.toJSON() };
     return json;
   }
 }
