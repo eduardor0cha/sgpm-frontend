@@ -143,16 +143,6 @@ const routes: Route[] = [
     icon: <MdNotifications />,
   },
   {
-    path: "/notifications",
-    title: "Notificações",
-    element: <div>Notificações</div>,
-    isProtected: true,
-    allowedRoles: "all",
-    useDefaultLayout: true,
-    showOnMenu: true,
-    icon: <MdNotifications />,
-  },
-  {
     path: "/reset-email/:token",
     title: "Confirmação do e-mail",
     element: <ResetEmail />,
