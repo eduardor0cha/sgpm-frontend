@@ -1,0 +1,32 @@
+.sgpm-p-reset-email {
+  background-color: var(--surface-color);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 2rem;
+
+  h1 {
+    font-size: 5rem;
+    font-weight: bold;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    color: var(--strong-neutral-text-color);
+  }
+
+  &.confirmed {
+    h1 {
+      color: var(--success-color);
+    }
+  }
+
+  &.not-confirmed {
+    h1 {
+      color: var(--danger-color);
+    }
+  }
+}

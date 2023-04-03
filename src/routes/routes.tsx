@@ -1,5 +1,5 @@
 import { Route } from "../domain/types";
-import { LoginPage, NotFound, ProfilePage } from "../pages";
+import { LoginPage, NotFound, ProfilePage, ResetEmail } from "../pages";
 import { IoMdCalendar } from "react-icons/io";
 import {
   MdChat,
@@ -141,6 +141,24 @@ const routes: Route[] = [
     useDefaultLayout: true,
     showOnMenu: true,
     icon: <MdNotifications />,
+  },
+  {
+    path: "/notifications",
+    title: "Notificações",
+    element: <div>Notificações</div>,
+    isProtected: true,
+    allowedRoles: "all",
+    useDefaultLayout: true,
+    showOnMenu: true,
+    icon: <MdNotifications />,
+  },
+  {
+    path: "/reset-email/:token",
+    title: "Confirmação do e-mail",
+    element: <ResetEmail />,
+    isProtected: false,
+    useDefaultLayout: false,
+    showOnMenu: false,
   },
 ];
 

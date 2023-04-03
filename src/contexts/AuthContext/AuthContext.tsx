@@ -26,6 +26,7 @@ type Props = {
     confirmPassword: string
   ): Promise<boolean | undefined>;
   refreshLoggedUser(): Promise<void>;
+  resetEmail(token: string): Promise<boolean>;
   loggedUser: UserType | null | undefined;
 };
 
@@ -149,6 +150,18 @@ function AuthProvider({ children }: PropsWithChildren) {
     }
   }, [loggedUser, setLoggedUser, showToast]);
 
+  const resetEmail = useCallback(async (token: string): Promise<boolean> => {
+    try {
+      const response = await AuthAPI.resetEmail(token);
+
+      if (!response) return false;
+
+      return true;
+    } catch (_) {
+      return false;
+    }
+  }, []);
+
   useEffect(() => {
     if (loggedUser !== undefined) return;
 
@@ -179,6 +192,7 @@ function AuthProvider({ children }: PropsWithChildren) {
         checkToken,
         updatePassword,
         refreshLoggedUser,
+        resetEmail,
         loggedUser,
       }}
     >

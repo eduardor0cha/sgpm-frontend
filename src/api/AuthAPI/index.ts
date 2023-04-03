@@ -65,6 +65,16 @@ class AuthAPI {
 
     return response.data.message;
   }
+
+  static async resetEmail(token: string): Promise<boolean> {
+    const response = await APIClient.post("/auth/reset-email", {
+      token: token,
+    });
+
+    if (!response) return false;
+
+    return true;
+  }
 }
 
 export default AuthAPI;
