@@ -9,6 +9,7 @@ import { ToastsContainer } from "./components/Toast";
 import { ToastProvider } from "./contexts";
 import { AuthProvider } from "./contexts/AuthContext";
 import ThemeProvider from "./contexts/ThemeContext/ThemeContext";
+import { UserProvider } from "./contexts/UserContext";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -19,7 +20,9 @@ root.render(
       <ThemeProvider>
         <ToastProvider>
           <AuthProvider>
-            <App />
+            <UserProvider>
+              <App />
+            </UserProvider>
           </AuthProvider>
           <ToastsContainer />
         </ToastProvider>

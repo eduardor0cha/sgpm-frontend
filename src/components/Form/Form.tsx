@@ -1,7 +1,7 @@
 import React, { forwardRef, Ref, useImperativeHandle, useRef } from "react";
 
 type Props = {
-  onSubmit(): void;
+  onSubmit?(): void;
 };
 
 export type FormHandlers = {
@@ -22,7 +22,7 @@ function Form(
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    onSubmit();
+    if (onSubmit) onSubmit();
   }
 
   function getValues(): Record<string, any> | undefined {
@@ -39,7 +39,8 @@ function Form(
 
             default:
               if (input.required && !input.value) return;
-              json[input.name] = input.value;
+
+              if (input.value) json[input.name] = input.value;
           }
         }
       }

@@ -1,4 +1,4 @@
-import { CSSProperties, useCallback, useContext, useRef } from "react";
+import { CSSProperties, useCallback, useEffect, useRef } from "react";
 import { Button, Form, Input } from "../../components";
 import { FormHandlers } from "../../components/Form/Form";
 import { Modal } from "../../components/Modal";
@@ -12,15 +12,20 @@ import {
   translateGender,
   translateRole,
 } from "../../utils/FormatUtils";
+import { useUser } from "../../contexts/UserContext";
+import { jsonToFormData } from "../../utils/FormDataUtils";
 
 function ProfilePage() {
-  const auth = useAuth();
-  const formRef = useRef<FormHandlers>(null);
+  const psswdFormRef = useRef<FormHandlers>(null);
+  const infosFormRef = useRef<FormHandlers>(null);
   const modalRef = useRef<ModalHandlers>(null);
-  const { updatePassword } = useAuth();
+  const { updatePassword, loggedUser } = useAuth();
+  const { update } = useUser();
+
+  useEffect(() => {}, [loggedUser]);
 
   const handleChangePassword = useCallback(async () => {
-    const values = formRef.current?.getValues();
+    const values = psswdFormRef.current?.getValues();
 
     if (!values) return;
 
@@ -32,46 +37,59 @@ function ProfilePage() {
 
     if (!response) return;
 
-    formRef.current?.clearValues();
-  }, []);
+    psswdFormRef.current?.clearValues();
+  }, [updatePassword]);
+
+  const handleSaveInfoUpdates = useCallback(async (): Promise<
+    boolean | undefined
+  > => {
+    const values = infosFormRef.current?.getValues();
+
+    if (!values) return;
+
+    if (!loggedUser?.cpf) return;
+
+    const response = await update(loggedUser?.cpf, jsonToFormData(values));
+    return response;
+  }, [update, loggedUser]);
 
   return (
     <>
       <div className="sgpm-p-profile">
         <div className="sgpm-p-profile__main-info sgpm-p-profile__info-container">
           <img
-            src={`${process.env.REACT_APP_API_URL}/files/${auth.loggedUser?.profilePic}`}
+            src={`${process.env.REACT_APP_API_URL}/files/${loggedUser?.profilePic}`}
             alt="Foto de perfil"
             className="sgpm-p-profile__profile-pic"
           />
           <div className="sgpm-p-profile__main-info--infos">
             <div>
-              <h4>{auth.loggedUser?.name}</h4>
-              <span>{translateRole(auth.loggedUser?.role)}</span>
-              {auth.loggedUser?.role === "medic" ? (
-                <span>{`CRM ${(auth.loggedUser as Medic).crm}`}</span>
+              <h4>{loggedUser?.name}</h4>
+              <span>{translateRole(loggedUser?.role)}</span>
+              {loggedUser?.role === "medic" ? (
+                <span>{`CRM ${(loggedUser as Medic).crm}`}</span>
               ) : null}
             </div>
             <div>
-              <span>{auth.loggedUser?.username}</span>
-              <span>{auth.loggedUser?.email}</span>
+              <span>{loggedUser?.username}</span>
+              <span>{loggedUser?.email}</span>
             </div>
           </div>
         </div>
         <div className="sgpm-p-profile__personal-data sgpm-p-profile__info-container">
           <h4>Dados pessoais</h4>
           <span>{`Sexo: ${translateGender(
-            auth.loggedUser?.gender
+            loggedUser?.gender
           )?.toLowerCase()}`}</span>
-          <span>{`CPF: ${formatCPF(auth.loggedUser?.cpf)}`}</span>
+          <span>{`CPF: ${formatCPF(loggedUser?.cpf)}`}</span>
           <span>{`Telefone: ${formatPhoneNumber(
-            auth.loggedUser?.phoneNumber
+            loggedUser?.phoneNumber
           )}`}</span>
           <h4>Endereço</h4>
-          <span>{`${auth.loggedUser?.address.street}, ${auth.loggedUser?.address.number}`}</span>
-          <span>{`${auth.loggedUser?.address.city.name} - ${
-            auth.loggedUser?.address.state.name
-          }, ${formatPostalCode(auth.loggedUser?.address.postalCode)}`}</span>
+          <span>{`${loggedUser?.address.street}, ${loggedUser?.address.number}`}</span>
+          <span>{`${loggedUser?.address.city.name} - ${
+            loggedUser?.address.state.name
+          }, ${formatPostalCode(loggedUser?.address.postalCode)}`}</span>
           <span>Brasil</span>
           <Button
             className="sgpm-p-profile__button"
@@ -82,7 +100,7 @@ function ProfilePage() {
         </div>
         <div className="sgpm-p-profile__change-password sgpm-p-profile__info-container">
           <h4>Alterar senha</h4>
-          <Form onSubmit={handleChangePassword} ref={formRef}>
+          <Form onSubmit={handleChangePassword} ref={psswdFormRef}>
             <div className="sgpm-p-profile__info-container-fields">
               <Input
                 label="Senha atual"
@@ -109,32 +127,79 @@ function ProfilePage() {
           </Form>
         </div>
       </div>
-      <Modal title="Atualizar dados" ref={modalRef} submitLabel="Salvar">
+      <Modal
+        title="Atualizar dados"
+        ref={modalRef}
+        submitLabel="Salvar"
+        onSubmit={handleSaveInfoUpdates}
+      >
         <div className="sgpm-p-profile__modal-content">
           <span>
             Para atualizar ou corrigir outro dado, entre em contato com o
             suporte.
           </span>
-          <div className="sgpm-p-profile__modal-content--fields">
-            <div style={{ gridTemplateColumns: "1fr 1fr" } as CSSProperties}>
-              <Input label="Nome de usuário" type="text" />
-              <Input label="E-mail" type="text" />
+          <Form ref={infosFormRef} method="put" encType="multipart/form-data">
+            <div className="sgpm-p-profile__modal-content--fields">
+              <div style={{ gridTemplateColumns: "1fr 1fr" } as CSSProperties}>
+                <Input
+                  label="Nome de usuário"
+                  type="text"
+                  name="username"
+                  placeholder={loggedUser?.username}
+                />
+                <Input
+                  label="E-mail"
+                  type="text"
+                  name="email"
+                  placeholder={loggedUser?.email}
+                />
+              </div>
+              <div
+                style={{ gridTemplateColumns: "3fr 4fr 3fr" } as CSSProperties}
+              >
+                <Input
+                  label="Estado"
+                  type="text"
+                  name="state"
+                  placeholder={loggedUser?.address.state.name}
+                />
+                <Input
+                  label="Cidade"
+                  type="text"
+                  name="city"
+                  placeholder={loggedUser?.address.city.name}
+                />
+                <Input
+                  label="CEP"
+                  type="text"
+                  name="postalCode"
+                  placeholder={loggedUser?.address.postalCode}
+                />
+              </div>
+              <div
+                style={{ gridTemplateColumns: "5fr 3fr 2fr" } as CSSProperties}
+              >
+                <Input
+                  label="Rua"
+                  type="text"
+                  name="street"
+                  placeholder={loggedUser?.address.street}
+                />
+                <Input
+                  label="Bairro"
+                  type="text"
+                  name="district"
+                  placeholder={loggedUser?.address.district}
+                />
+                <Input
+                  label="Número"
+                  type="text"
+                  name="number"
+                  placeholder={loggedUser?.address.number}
+                />
+              </div>
             </div>
-            <div
-              style={{ gridTemplateColumns: "3fr 4fr 3fr" } as CSSProperties}
-            >
-              <Input label="Estado" type="text" />
-              <Input label="Cidade" type="text" />
-              <Input label="CEP" type="text" />
-            </div>
-            <div
-              style={{ gridTemplateColumns: "5fr 3fr 2fr" } as CSSProperties}
-            >
-              <Input label="Rua" type="text" />
-              <Input label="Bairro" type="text" />
-              <Input label="Número" type="text" />
-            </div>
-          </div>
+          </Form>
         </div>
       </Modal>
     </>

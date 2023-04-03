@@ -16,11 +16,12 @@ export type ModalHandlers = {
 
 type Props = {
   submitLabel?: string;
+  onSubmit?(): Promise<boolean | undefined>;
   title: string;
 };
 
 function Modal(
-  { submitLabel, title, children }: Props & PropsWithChildren,
+  { submitLabel, onSubmit, title, children }: Props & PropsWithChildren,
   ref: Ref<ModalHandlers>
 ) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -41,6 +42,13 @@ function Modal(
     [close, modalOutsideRef]
   );
 
+  const handleSubmit = useCallback(async () => {
+    if (onSubmit) {
+      const response = await onSubmit();
+      if (response) return setIsOpen(false);
+    }
+  }, [onSubmit]);
+
   useImperativeHandle(ref, () => ({ open, close }));
 
   return (
@@ -60,7 +68,7 @@ function Modal(
               <Button onClick={close} isTransparent={true}>
                 Cancelar
               </Button>
-              <Button isTransparent={true}>
+              <Button isTransparent={true} onClick={handleSubmit}>
                 {submitLabel ? submitLabel : "Confirmar"}
               </Button>
             </div>

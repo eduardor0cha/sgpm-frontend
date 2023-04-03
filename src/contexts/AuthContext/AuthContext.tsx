@@ -10,6 +10,7 @@ import { AuthAPI } from "../../api";
 import { UserType } from "../../domain/types";
 import { getErrorMessage } from "../../utils";
 import { ToastContext } from "../ToastContext";
+import UserAPI from "../../api/UserAPI";
 
 type Props = {
   login(
@@ -24,6 +25,7 @@ type Props = {
     newPassword: string,
     confirmPassword: string
   ): Promise<boolean | undefined>;
+  refreshLoggedUser(): Promise<void>;
   loggedUser: UserType | null | undefined;
 };
 
@@ -136,6 +138,17 @@ function AuthProvider({ children }: PropsWithChildren) {
     [showToast]
   );
 
+  const refreshLoggedUser = useCallback(async () => {
+    try {
+      if (!loggedUser) return;
+
+      const response = await UserAPI.findById(loggedUser?.cpf);
+      setLoggedUser(response);
+    } catch (error) {
+      showToast("danger", getErrorMessage(error));
+    }
+  }, [loggedUser, setLoggedUser, showToast]);
+
   useEffect(() => {
     if (loggedUser !== undefined) return;
 
@@ -165,6 +178,7 @@ function AuthProvider({ children }: PropsWithChildren) {
         logout,
         checkToken,
         updatePassword,
+        refreshLoggedUser,
         loggedUser,
       }}
     >
