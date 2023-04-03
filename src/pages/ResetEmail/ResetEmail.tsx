@@ -35,7 +35,7 @@ function ResetEmail() {
       ) : (
         <div className="sgpm-p-reset-email not-confirmed">
           <h1>Oops!</h1>
-          <h2>Parece que o token passado é inválido.</h2>
+          <h2>Parece que o token passado é inválido ou já foi utilizado.</h2>
           <Button onClick={() => navigate("/", { replace: true })}>
             Voltar ao início
           </Button>
