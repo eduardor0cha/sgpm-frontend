@@ -1,4 +1,4 @@
-import { CSSProperties, useCallback, useEffect, useRef } from "react";
+import { CSSProperties, useCallback, useRef } from "react";
 import { Button, Form, Input } from "../../components";
 import { FormHandlers } from "../../components/Form/Form";
 import { Modal } from "../../components/Modal";
@@ -21,8 +21,6 @@ function ProfilePage() {
   const modalRef = useRef<ModalHandlers>(null);
   const { updatePassword, loggedUser } = useAuth();
   const { update } = useUser();
-
-  useEffect(() => {}, [loggedUser]);
 
   const handleChangePassword = useCallback(async () => {
     const values = psswdFormRef.current?.getValues();

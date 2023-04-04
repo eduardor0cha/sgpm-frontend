@@ -75,6 +75,28 @@ class AuthAPI {
 
     return true;
   }
+
+  static async checkAccountConfirmationToken(token: string): Promise<boolean> {
+    const response = await APIClient.post("/auth/confirm-account/token", {
+      token: token,
+    });
+
+    if (!response) return false;
+
+    return true;
+  }
+
+  static async confirmAccount(
+    token: string,
+    password: string
+  ): Promise<string> {
+    const response = await APIClient.post("/auth/confirm-account", {
+      token: token,
+      password: password,
+    });
+
+    return response.data.message;
+  }
 }
 
 export default AuthAPI;

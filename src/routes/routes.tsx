@@ -9,6 +9,7 @@ import {
   MdPersonAdd,
   MdSwapVert,
 } from "react-icons/md";
+import { ConfirmAccount } from "../pages/ConfirmAccount";
 
 const routes: Route[] = [
   {
@@ -146,6 +147,14 @@ const routes: Route[] = [
     path: "/reset-email/:token",
     title: "Confirmação do e-mail",
     element: <ResetEmail />,
+    isProtected: false,
+    useDefaultLayout: false,
+    showOnMenu: false,
+  },
+  {
+    path: "/get-started/:token",
+    title: "Confirmar conta",
+    element: <ConfirmAccount />,
     isProtected: false,
     useDefaultLayout: false,
     showOnMenu: false,

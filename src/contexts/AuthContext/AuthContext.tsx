@@ -27,6 +27,12 @@ type Props = {
   ): Promise<boolean | undefined>;
   refreshLoggedUser(): Promise<void>;
   resetEmail(token: string): Promise<boolean>;
+  checkAccountConfirmationToken(token: string): Promise<boolean>;
+  confirmAccount(
+    token: string,
+    password: string,
+    confirmPassword: string
+  ): Promise<boolean>;
   loggedUser: UserType | null | undefined;
 };
 
@@ -162,6 +168,42 @@ function AuthProvider({ children }: PropsWithChildren) {
     }
   }, []);
 
+  const checkAccountConfirmationToken = useCallback(async (token: string) => {
+    try {
+      const response = await AuthAPI.checkAccountConfirmationToken(token);
+
+      if (!response) return false;
+
+      return response;
+    } catch (_) {
+      return false;
+    }
+  }, []);
+
+  const confirmAccount = useCallback(
+    async (
+      token: string,
+      password: string,
+      confirmPassword: string
+    ): Promise<boolean> => {
+      try {
+        if (password !== confirmPassword) {
+          showToast("danger", "A nova senha e a confirmação não batem.");
+          return false;
+        }
+
+        const response = await AuthAPI.confirmAccount(token, password);
+
+        if (response) showToast("success", response);
+        return true;
+      } catch (error) {
+        showToast("danger", getErrorMessage(error));
+        return false;
+      }
+    },
+    [showToast]
+  );
+
   useEffect(() => {
     if (loggedUser !== undefined) return;
 
@@ -193,6 +235,8 @@ function AuthProvider({ children }: PropsWithChildren) {
         updatePassword,
         refreshLoggedUser,
         resetEmail,
+        checkAccountConfirmationToken,
+        confirmAccount,
         loggedUser,
       }}
     >

@@ -1,4 +1,4 @@
-.sgpm-p-not-found {
+.sgpm-p-confirm-account {
   background-color: var(--surface-color);
   height: 100vh;
   display: flex;
@@ -18,5 +18,22 @@
   h2 {
     font-size: 1.5rem;
     color: var(--strong-neutral-text-color);
+  }
+
+  &.error {
+    h1 {
+      color: var(--danger-color);
+    }
+  }
+
+  &__fields {
+    text-align: initial;
+    width: 100%;
+    max-width: 30rem;
+  }
+
+  &__confirm-button {
+    margin-top: 2rem;
+    align-self: center;
   }
 }
