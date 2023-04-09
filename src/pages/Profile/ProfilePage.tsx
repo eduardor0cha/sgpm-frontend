@@ -16,6 +16,7 @@ import { useUser } from "../../contexts/UserContext";
 import { jsonToFormData } from "../../utils/FormDataUtils";
 import { useResources } from "../../contexts/ResourcesContext";
 import { SelectOption } from "../../components/Select/Select";
+import { getProfilePicUrl } from "../../utils/ProfileUtils";
 
 function ProfilePage() {
   const psswdFormRef = useRef<FormHandlers>(null);
@@ -87,7 +88,7 @@ function ProfilePage() {
       <div className="sgpm-p-profile">
         <div className="sgpm-p-profile__main-info sgpm-p-profile__info-container">
           <img
-            src={`${process.env.REACT_APP_API_URL}/files/${loggedUser?.profilePic}`}
+            src={getProfilePicUrl(loggedUser?.profilePic)}
             alt="Foto de perfil"
             className="sgpm-p-profile__profile-pic"
           />

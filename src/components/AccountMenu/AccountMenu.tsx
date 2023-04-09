@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth, useTheme } from "../../contexts";
 import { ToggleSwitch } from "../ToggleSwitch";
+import { getProfilePicUrl } from "../../utils/ProfileUtils";
 
 function AccountMenu() {
   const auth = useAuth();
@@ -39,7 +40,7 @@ function AccountMenu() {
   return (
     <div className="sgpm-c-account-menu" ref={ref}>
       <img
-        src={`${process.env.REACT_APP_API_URL}/files/${auth.loggedUser?.profilePic}`}
+        src={getProfilePicUrl(auth.loggedUser?.profilePic)}
         alt="Foto de perfil"
         onClick={() => setCollapsed(!collapsed)}
         className="sgpm-c-account-menu__profile-pic"
