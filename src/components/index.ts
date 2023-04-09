@@ -8,6 +8,8 @@ import { ProtectedRoute } from "./ProtectedRoute";
 import { ToastsContainer as Toast } from "./Toast";
 import { Sidebar } from "./Sidebar";
 import { AccountMenu } from "./AccountMenu";
+import { Modal } from "./Modal";
+import { Select } from "./Select";
 
 export {
   Input,
@@ -20,4 +22,6 @@ export {
   Toast,
   Sidebar,
   AccountMenu,
+  Modal,
+  Select,
 };

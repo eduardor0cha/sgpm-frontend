@@ -74,9 +74,15 @@ function Form(
     for (const child of formRef.current.children) {
       const inputs = child.getElementsByTagName("input");
       for (const input of inputs) {
-        switch (input.type) {
+        if (!input.name) continue;
+        switch (input.getAttribute("data-type")) {
           case "checkbox":
             input.checked = false;
+            break;
+
+          case "select":
+            input.value = "";
+            input.dispatchEvent(new Event("change", { bubbles: true }));
             break;
 
           default:

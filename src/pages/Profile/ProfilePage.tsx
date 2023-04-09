@@ -1,10 +1,10 @@
-import { CSSProperties, useCallback, useRef } from "react";
-import { Button, Form, Input } from "../../components";
+import { useCallback, useEffect, useRef, useState } from "react";
+import { Button, Form, Input, Select } from "../../components";
 import { FormHandlers } from "../../components/Form/Form";
 import { Modal } from "../../components/Modal";
 import { ModalHandlers } from "../../components/Modal/Modal";
 import { useAuth } from "../../contexts";
-import { Medic } from "../../domain/models";
+import { City, Medic } from "../../domain/models";
 import {
   formatCPF,
   formatPhoneNumber,
@@ -14,13 +14,18 @@ import {
 } from "../../utils/FormatUtils";
 import { useUser } from "../../contexts/UserContext";
 import { jsonToFormData } from "../../utils/FormDataUtils";
+import { useResources } from "../../contexts/ResourcesContext";
+import { SelectOption } from "../../components/Select/Select";
 
 function ProfilePage() {
   const psswdFormRef = useRef<FormHandlers>(null);
   const infosFormRef = useRef<FormHandlers>(null);
+  const citySelectRef = useRef<HTMLInputElement>(null);
   const modalRef = useRef<ModalHandlers>(null);
   const { updatePassword, loggedUser } = useAuth();
   const { update } = useUser();
+  const { states, fetchStates, fetchCitiesByStateId } = useResources();
+  const [cities, setCities] = useState<City[]>();
 
   const handleChangePassword = useCallback(async () => {
     const values = psswdFormRef.current?.getValues();
@@ -32,7 +37,6 @@ function ProfilePage() {
     const confirmPsswd = values["confirm-password"];
 
     const response = await updatePassword(currentPsswd, newPsswd, confirmPsswd);
-
     if (!response) return;
 
     psswdFormRef.current?.clearValues();
@@ -44,12 +48,39 @@ function ProfilePage() {
     const values = infosFormRef.current?.getValues();
 
     if (!values) return;
-
     if (!loggedUser?.cpf) return;
 
     const response = await update(loggedUser?.cpf, jsonToFormData(values));
     return response;
   }, [update, loggedUser]);
+
+  const fetchCities = useCallback(
+    async (stateId?: number): Promise<void> => {
+      if (stateId) {
+        const response = await fetchCitiesByStateId(stateId);
+        setCities(response);
+      }
+    },
+    [fetchCitiesByStateId]
+  );
+
+  const handleSelectState = useCallback(
+    (value: any) => {
+      fetchCities(value);
+      if (citySelectRef.current) {
+        citySelectRef.current.value = "";
+        citySelectRef.current.dispatchEvent(
+          new Event("change", { bubbles: true })
+        );
+      }
+    },
+    [fetchCities]
+  );
+
+  useEffect(() => {
+    if (!states) fetchStates();
+    fetchCities(loggedUser?.address.state.id);
+  }, [states, fetchStates, fetchCities, loggedUser?.address.state.id]);
 
   return (
     <>
@@ -138,7 +169,7 @@ function ProfilePage() {
           </span>
           <Form ref={infosFormRef} method="put" encType="multipart/form-data">
             <div className="sgpm-p-profile__modal-content--fields">
-              <div style={{ gridTemplateColumns: "1fr 1fr" } as CSSProperties}>
+              <div style={{ gridTemplateColumns: "1fr 1fr" }}>
                 <Input
                   label="Nome de usuário"
                   type="text"
@@ -152,20 +183,37 @@ function ProfilePage() {
                   placeholder={loggedUser?.email}
                 />
               </div>
-              <div
-                style={{ gridTemplateColumns: "3fr 4fr 3fr" } as CSSProperties}
-              >
-                <Input
+              <div style={{ gridTemplateColumns: "3fr 4fr 3fr" }}>
+                <Select
                   label="Estado"
-                  type="text"
-                  name="state"
-                  placeholder={loggedUser?.address.state.name}
+                  defaultUnselectedOpt={true}
+                  options={
+                    states?.map(
+                      (state) =>
+                        ({ value: state.id, label: state.name } as SelectOption)
+                    ) ?? []
+                  }
+                  initialOption={{
+                    value: loggedUser?.address.state.id,
+                    label: loggedUser?.address.state.name,
+                  }}
+                  onChange={handleSelectState}
                 />
-                <Input
+                <Select
                   label="Cidade"
-                  type="text"
-                  name="city"
-                  placeholder={loggedUser?.address.city.name}
+                  defaultUnselectedOpt={true}
+                  name="cityId"
+                  options={
+                    cities?.map(
+                      (city) =>
+                        ({ value: city.id, label: city.name } as SelectOption)
+                    ) ?? []
+                  }
+                  initialOption={{
+                    value: loggedUser?.address.city.id,
+                    label: loggedUser?.address.city.name,
+                  }}
+                  ref={citySelectRef}
                 />
                 <Input
                   label="CEP"
@@ -174,9 +222,7 @@ function ProfilePage() {
                   placeholder={loggedUser?.address.postalCode}
                 />
               </div>
-              <div
-                style={{ gridTemplateColumns: "5fr 3fr 2fr" } as CSSProperties}
-              >
+              <div style={{ gridTemplateColumns: "5fr 3fr 2fr" }}>
                 <Input
                   label="Rua"
                   type="text"

@@ -45,6 +45,7 @@ function Input({
       </label>
       <div className="sgpm-c-input__field">
         <input
+          data-type={type}
           type={getInputType()}
           {...props}
           id={id}

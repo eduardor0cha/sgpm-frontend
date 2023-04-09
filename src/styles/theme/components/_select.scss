@@ -1,0 +1,7 @@
+:root {
+  --select-options-background-color: var(--gray-100);
+
+  &.theme--dark {
+    --select-options-background-color: var(--gray-700);
+  }
+}

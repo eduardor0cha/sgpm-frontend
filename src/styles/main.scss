@@ -11,6 +11,7 @@
 @import "./theme/components/button";
 @import "./theme/components/modal";
 @import "./theme/components/toast";
+@import "./theme/components/select";
 
 // Base
 @import "./base/reset";
@@ -35,3 +36,4 @@
 @import "../components/ToggleSwitch/toggle-switch";
 @import "../components/Modal/modal.scss";
 @import "../components/Form/form";
+@import "../components/Select/select";
