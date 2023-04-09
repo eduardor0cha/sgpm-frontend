@@ -10,6 +10,7 @@ import { ToastProvider } from "./contexts";
 import { AuthProvider } from "./contexts/AuthContext";
 import ThemeProvider from "./contexts/ThemeContext/ThemeContext";
 import { UserProvider } from "./contexts/UserContext";
+import { ResourcesProvider } from "./contexts/ResourcesContext";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -17,21 +18,20 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <ThemeProvider>
-        <ToastProvider>
-          <AuthProvider>
-            <UserProvider>
-              <App />
-            </UserProvider>
-          </AuthProvider>
-          <ToastsContainer />
-        </ToastProvider>
-      </ThemeProvider>
+      <ResourcesProvider>
+        <ThemeProvider>
+          <ToastProvider>
+            <AuthProvider>
+              <UserProvider>
+                <App />
+              </UserProvider>
+            </AuthProvider>
+            <ToastsContainer />
+          </ToastProvider>
+        </ThemeProvider>
+      </ResourcesProvider>
     </BrowserRouter>
   </React.StrictMode>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
